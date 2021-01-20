@@ -1,0 +1,104 @@
+@mixin fontWeight($weight) {
+  $weights: (
+          thin: 100,
+          extra-light: 200,
+          ultra-light: 200,
+          light: 300,
+          normal: 400,
+          book: 400,
+          regular: 400,
+          medium: 500,
+          semi-bold: 600,
+          demi-bold: 600,
+          bold: 700,
+          extra-bold: 800,
+          ultra-bold: 900,
+          heavy: 900,
+          black: 900,
+          ultra: 900,
+          ultra-black: 900,
+          extra-ultra: 900
+  );
+
+  $output: $weight;
+  @if map-has-key($weights, $weight) {
+    $output: map-get($weights, $weight);
+  }
+
+  font-weight: $output;
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: calculateRem($size);
+}
+
+@font-face {
+  font-family: customFont;
+  src: url("../assets/fonts/ITCAvantGardeStdBold.otf") format("opentype");
+}
+
+body{
+  margin: 0;
+  font-family: customFont, sans-serif;
+  color: #FFF;
+}
+
+img{
+  display: block;
+  margin: 0;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundVideo {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.red{
+  color: red !important;
+  transition: 1s linear;
+}
+
+#menu{
+  position: fixed;
+  width: 400px;
+  height: 100vh;
+  text-align: center;
+  left: calc(50% - 200px);
+  z-index: 1;
+  @include fontSize(60px);
+
+  & > div:nth-child(1){
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  & > div:nth-child(2){
+    ul{
+      list-style: none;
+      margin: unset;
+      padding: unset;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+

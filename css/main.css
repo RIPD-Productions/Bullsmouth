@@ -1,0 +1,48 @@
+@font-face {
+  font-family: customFont;
+  src: url("../assets/fonts/ITCAvantGardeStdBold.otf") format("opentype"); }
+body {
+  margin: 0;
+  font-family: customFont, sans-serif;
+  color: #FFF; }
+
+img {
+  display: block;
+  margin: 0; }
+
+.container {
+  width: 100%;
+  height: 100%; }
+
+.backgroundVideo {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; }
+
+.red {
+  color: red !important;
+  transition: 1s linear; }
+
+#menu {
+  position: fixed;
+  width: 400px;
+  height: 100vh;
+  text-align: center;
+  left: calc(50% - 200px);
+  z-index: 1;
+  font-size: 3.75rem; }
+  #menu > div:nth-child(1) img {
+    width: 100%;
+    height: auto; }
+  #menu > div:nth-child(2) ul {
+    list-style: none;
+    margin: unset;
+    padding: unset; }
+  #menu > div:nth-child(2) a {
+    text-decoration: none;
+    color: inherit; }
+
+/*# sourceMappingURL=main.css.map */
