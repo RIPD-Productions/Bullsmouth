@@ -102,3 +102,36 @@ img{
   }
 }
 
+#interface{
+  position: static;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  text-align: center;
+}
+
+#questionCard{
+  height: 80vh;
+}
+
+#interfaceOptions{
+  display: flex;
+  height: 20vh;
+  flex-wrap: wrap
+}
+
+.optionsChild{
+  flex-grow: 1;
+  width: calc(100% / 2);
+}
+
+.answer{
+  display: block;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  padding: 1rem;
+
+  &:hover{
+    background: green;
+  }
+}
