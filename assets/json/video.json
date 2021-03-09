@@ -1,0 +1,14 @@
+{
+  "mainSegments": [
+
+  ],
+  "adSegments": [
+
+  ],
+  "finalRound": [
+    "topLeft",
+    "topRight",
+    "bottomLeft",
+    "bottomRight"
+  ]
+}

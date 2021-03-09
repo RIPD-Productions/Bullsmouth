@@ -3,6 +3,9 @@ const navSelector = document.getElementsByClassName('nav')
 let navIndex = 0
 let navLength = (navSelector.length - 1)
 
+let answerIndex = 0
+let answerLength = (answerSelector.length - 1)
+
 function gamepadInput(){
 
     let c = navigator.getGamepads()[0]
@@ -10,30 +13,70 @@ function gamepadInput(){
 
     for (let i = 0; i < b.length; i++) {
         if(b[i].pressed === true){
+            //D-Pad Up
             if(b[12].pressed === true){
-                navSelector[navIndex--].classList.remove('red')
+
+                if(navSelector.length > 0){
+
+                    navIndex--
+
+                    if(navIndex < 0){
+                        navIndex = navLength
+                    }
+
+                    navSelector[navIndex].focus();
+                }
+
+                if(answerSelector.length > 0){
+                    answerIndex--
+
+                    if(answerIndex < 0){
+                        answerIndex = answerLength
+                    }
+
+                    answerSelector[answerIndex].focus();
+                }
+
             }
+            //D-Pad Down
             if(b[13].pressed === true){
-                navIndex++
 
-                if(navIndex > navLength){
-                    navIndex = 0
+                if(navSelector.length > 0){
+
+                    navIndex++
+
+                    if(navIndex > navLength){
+                        navIndex = 0
+                    }
+
+                    navSelector[navIndex].focus();
                 }
 
-                navSelector[navIndex].classList.add('red')
+                if(answerSelector.length > 0){
 
-                if(navIndex === 0){
-                    navSelector[navLength].classList.remove('red')
-                } else {
-                    navSelector[navIndex - 1].classList.remove('red')
+                    answerIndex++
+
+                    if(answerIndex > answerLength){
+                        answerIndex = 0
+                    }
+
+                    answerSelector[answerIndex].focus();
                 }
-
-                console.log(navIndex)
 
             }
+            //A
             if(b[0].pressed === true){
-                navSelector[navIndex].click()
+
+                if(navSelector.length > 0){
+                    navSelector[navIndex].click()
+                }
+
+                if(answerSelector.length > 0){
+                    answerSelector[answerIndex].click()
+                }
+
             }
+            //B
             if(b[1].pressed === true){
                 history.back()
             }

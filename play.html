@@ -9,25 +9,25 @@
 </head>
 <body>
     <div class="container">
-        <video autoplay preload="auto" class="backgroundVideo" id="bullsmouthVideo" controls>
+        <div id="interface">
+            <div id="questionCard">
+                What year did King George III die?
+            </div>
+            <div id="interfaceOptions">
+                <div class="optionsChild"><a class="answer" id="a1" href="#">A.<br>1776</a></div>
+                <div class="optionsChild"><a class="answer" id="a2" href="#">B.<br>1820</a></div>
+                <div class="optionsChild"><a class="answer" id="a3" href="#">C.<br>1658</a></div>
+                <div class="optionsChild"><a class="answer" id="a4" href="#">D.<br>1952</a></div>
+            </div>
+        </div>
+        <video preload="auto" class="backgroundVideo" id="bullsmouthVideo">
             <source src="./assets/vid/sea.mp4" type="video/mp4">
             Sorry, your browser doesn't support embedded videos.
         </video>
-        <div id="interface">
-            <div id="questionCard">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at tristique purus.
-            </div>
-            <div id="interfaceOptions">
-                <div class="optionsChild"><a class="answer" id="a1" href="#">Q1</a></div>
-                <div class="optionsChild"><a class="answer" id="a2" href="#">Q2</a></div>
-                <div class="optionsChild"><a class="answer" id="a3" href="#">Q3</a></div>
-                <div class="optionsChild"><a class="answer" id="a4" href="#">Q4</a></div>
-            </div>
-        </div>
     </div>
 </body>
 <footer>
+    <script src="js/gameshow.js"></script>
     <script src="js/keyboardInput.js"></script>
     <script src="js/controllerInput.js"></script>
-    <script src="js/gameshow.js"></script>
 </footer>
