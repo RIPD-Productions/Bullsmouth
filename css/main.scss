@@ -45,8 +45,24 @@
 body{
   margin: 0;
   font-family: customFont, sans-serif;
-  background-color: #F8EEF6;
+  background: rgb(248,238,246);
+  background: linear-gradient(180deg, rgba(248,238,246,1) 0%, rgba(255,238,252,1) 100%);
   color: #98282B;
+
+  &::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0.70;
+    z-index: -1;
+    background-image: url(../assets/img/svg/dartboard_white.svg);
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: cover;
+  }
 }
 
 img{
@@ -54,45 +70,121 @@ img{
   margin: 0;
 }
 
+video {
+  object-fit: cover;
+}
+
 .container{
   width: 100%;
   height: 100vh;
+  margin: 0 auto;
+}
+
+#credits{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(0.75rem, calc(-0.2222rem + 5.4321vw), 1.5rem);
+  ul{
+    list-style: none;
+  }
+
+  li{
+    padding-bottom: 0.75rem;
+
+    &:last-child{
+      padding-bottom: unset;
+    }
+  }
+}
+
+#highscores{
+  display: flex;
+  padding: 5rem;
+  font-size: calculateRem(25px);
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    td{
+      padding: calculateRem(10px);
+    }
+
+    tr:nth-child(odd){
+      background-color: rgba(255,255,255,0.75);
+    }
+
+    th{
+      background-color: #FFF;
+      padding: calculateRem(10px);
+    }
+  }
+}
+
+#videoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  z-index: 0;
+}
+
+#landscape{
+  display: none;
 }
 
 .backgroundVideo {
-  position: static;
+  position: relative;
   width: 100%;
-  height: auto;
-  top: 0;
-  left: 0;
+  height: 100%;
 }
 
-#bullsmouthVideo{
-  z-index: 0;
+@media (orientation: portrait) {
+  .backgroundVideo {
+    display: none;
+  }
+
+  #landscape{
+    display: flex;
+    height: 100vh;
+    color: #FFF;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
 }
 
 #logo{
   display: flex;
-  height: 40vh;
+  height: calc(40vh - 2rem);
   z-index: 1;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 
   img{
-    max-width: 400px;
-    max-height: 400px;
+    width: auto;
+    height: 100%;
   }
 
 }
 
 #menu{
   display: flex;
-  height: 60vh;
+  height: calc(60vh - 2rem);
   z-index: 1;
-  @include fontSize(90px);
+  font-size: clamp(4.5rem, calc(-0.2222rem + 5.4321vw), 9rem);
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
+
 
   ul{
       list-style: none;
@@ -105,37 +197,74 @@ img{
 .nav{
   text-decoration: none;
   color: inherit;
+  text-shadow: 3px 3px 0 #000;
+  -webkit-text-stroke: 3px #000;
 
   &:focus,&:hover{
-    color: red;
+    color: white;
   }
 }
 
 #interface{
-  visibility: visible;
-  position: static;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: calc(100% - 5rem);
   height: calc(100vh - 5rem);
   z-index: 1;
-  text-align: center;
   border: 2.5rem solid #F8EEF6;
   background: #FFF;
+  color: #000;
+}
+
+#categoryCard{
+  visibility: hidden;
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  height: calc(100vh - 10rem);
+  width: calc(100% - 10rem);
+  padding: 5rem;
+  font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+  z-index: 3;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  ul{
+    list-style: none;
+  }
+}
+
+.categoryOption{
+  text-decoration: none;
+  color: #000;
+
+  &:focus, &:hover{
+    color: #98282B;
+  }
 }
 
 #questionCard{
+  visibility: visible;
   display: flex;
   height: calc((100vh - 40vh) - 15rem);
-  color: #000;
   padding: 5rem;
   font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+  z-index: 2;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #interfaceOptions{
+  visibility: visible;
   display: flex;
   height: 40vh;
   flex-wrap: wrap;
+  z-index: 2;
 }
 
 .optionsChild{
@@ -155,7 +284,7 @@ img{
   font-size: calculateRem(30px);
   justify-content: center;
   align-items: center;
-
+  text-align: center;
 
   &:focus,&:hover{
     border: 1rem solid #98282B;

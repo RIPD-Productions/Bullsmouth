@@ -4,45 +4,112 @@
 body {
   margin: 0;
   font-family: customFont, sans-serif;
-  background-color: #F8EEF6;
+  background: #f8eef6;
+  background: linear-gradient(180deg, #f8eef6 0%, #ffeefc 100%);
   color: #98282B; }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0.70;
+    z-index: -1;
+    background-image: url(../assets/img/svg/dartboard_white.svg);
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: cover; }
 
 img {
   display: block;
   margin: 0; }
 
+video {
+  object-fit: cover; }
+
 .container {
   width: 100%;
-  height: 100vh; }
+  height: 100vh;
+  margin: 0 auto; }
 
-.backgroundVideo {
-  position: static;
-  width: 100%;
-  height: auto;
+#credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(0.75rem, calc(-0.2222rem + 5.4321vw), 1.5rem); }
+  #credits ul {
+    list-style: none; }
+  #credits li {
+    padding-bottom: 0.75rem; }
+    #credits li:last-child {
+      padding-bottom: unset; }
+
+#highscores {
+  display: flex;
+  padding: 5rem;
+  font-size: 1.5625rem; }
+  #highscores table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left; }
+    #highscores table td {
+      padding: 0.625rem; }
+    #highscores table tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.75); }
+    #highscores table th {
+      background-color: #FFF;
+      padding: 0.625rem; }
+
+#videoWrapper {
+  position: absolute;
   top: 0;
-  left: 0; }
-
-#bullsmouthVideo {
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
   z-index: 0; }
 
+#landscape {
+  display: none; }
+
+.backgroundVideo {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+@media (orientation: portrait) {
+  .backgroundVideo {
+    display: none; }
+
+  #landscape {
+    display: flex;
+    height: 100vh;
+    color: #FFF;
+    align-items: center;
+    text-align: center;
+    justify-content: center; } }
 #logo {
   display: flex;
-  height: 40vh;
+  height: calc(40vh - 2rem);
   z-index: 1;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  padding: 1rem; }
   #logo img {
-    max-width: 400px;
-    max-height: 400px; }
+    width: auto;
+    height: 100%; }
 
 #menu {
   display: flex;
-  height: 60vh;
+  height: calc(60vh - 2rem);
   z-index: 1;
-  font-size: 5.625rem;
+  font-size: clamp(4.5rem, calc(-0.2222rem + 5.4321vw), 9rem);
   justify-content: center;
   align-items: center;
-  text-align: center; }
+  text-align: center;
+  padding: 1rem; }
   #menu ul {
     list-style: none;
     margin: unset;
@@ -50,33 +117,64 @@ img {
 
 .nav {
   text-decoration: none;
-  color: inherit; }
+  color: inherit;
+  text-shadow: 3px 3px 0 #000;
+  -webkit-text-stroke: 3px #000; }
   .nav:focus, .nav:hover {
-    color: red; }
+    color: white; }
 
 #interface {
-  visibility: visible;
-  position: static;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: calc(100% - 5rem);
   height: calc(100vh - 5rem);
   z-index: 1;
-  text-align: center;
   border: 2.5rem solid #F8EEF6;
-  background: #FFF; }
+  background: #FFF;
+  color: #000; }
 
-#questionCard {
+#categoryCard {
+  visibility: hidden;
+  position: fixed;
   display: flex;
-  height: calc((100vh - 40vh) - 15rem);
-  color: #000;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  height: calc(100vh - 10rem);
+  width: calc(100% - 10rem);
   padding: 5rem;
   font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+  z-index: 3;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  text-align: center; }
+  #categoryCard ul {
+    list-style: none; }
+
+.categoryOption {
+  text-decoration: none;
+  color: #000; }
+  .categoryOption:focus, .categoryOption:hover {
+    color: #98282B; }
+
+#questionCard {
+  visibility: visible;
+  display: flex;
+  height: calc((100vh - 40vh) - 15rem);
+  padding: 5rem;
+  font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
 
 #interfaceOptions {
+  visibility: visible;
   display: flex;
   height: 40vh;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  z-index: 2; }
 
 .optionsChild {
   flex-grow: 1;
@@ -93,7 +191,8 @@ img {
   color: #000;
   font-size: 1.875rem;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  text-align: center; }
   .answer:focus, .answer:hover {
     border: 1rem solid #98282B; }
 
