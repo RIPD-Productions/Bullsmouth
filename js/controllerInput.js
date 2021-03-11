@@ -1,10 +1,16 @@
 const navSelector = document.getElementsByClassName('nav')
+const categorySelector = document.getElementsByClassName('categoryOption')
 
 let navIndex = 0
 let navLength = (navSelector.length - 1)
 
 let answerIndex = 0
 let answerLength = (answerSelector.length - 1)
+
+let categoryIndex = 0
+let categoryLength = (categorySelector.length - 1)
+
+console.log(categorySelector)
 
 function gamepadInput(){
 
@@ -24,8 +30,24 @@ function gamepadInput(){
                         navIndex = navLength
                     }
 
-                    navSelector[navIndex].focus();
+                    navSelector[navIndex].focus()
                 }
+
+                if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "visible"){
+
+                    categoryIndex--
+
+                    if(categoryIndex < 0){
+                        categoryIndex = categoryLength
+                    }
+
+                    categorySelector[categoryIndex].focus()
+                }
+
+/*                if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "hidden"){
+
+                    console.log('I am invisible')
+                }*/
 
                 if(answerSelector.length > 0){
                     answerIndex--
@@ -34,7 +56,7 @@ function gamepadInput(){
                         answerIndex = answerLength
                     }
 
-                    answerSelector[answerIndex].focus();
+                    answerSelector[answerIndex].focus()
                 }
 
             }
@@ -49,7 +71,18 @@ function gamepadInput(){
                         navIndex = 0
                     }
 
-                    navSelector[navIndex].focus();
+                    navSelector[navIndex].focus()
+                }
+
+                if(categorySelector.length > 0){
+
+                    categoryIndex++
+
+                    if(categoryIndex > categoryLength){
+                        categoryIndex = 0
+                    }
+
+                    categorySelector[categoryIndex].focus()
                 }
 
                 if(answerSelector.length > 0){
@@ -60,7 +93,7 @@ function gamepadInput(){
                         answerIndex = 0
                     }
 
-                    answerSelector[answerIndex].focus();
+                    answerSelector[answerIndex].focus()
                 }
 
             }
@@ -88,12 +121,12 @@ function gamepadInput(){
 let loop;
 
 window.addEventListener("gamepadconnected", function (){
-    console.log("Gamepad Connected");
-    loop = setInterval(gamepadInput, 250);
+    console.log("Gamepad Connected")
+    loop = setInterval(gamepadInput, 250)
 })
 
 window.addEventListener("gamepaddisconnected", function() {
-    console.log("Gamepad Disconnected");
+    console.log("Gamepad Disconnected")
     clearInterval(loop)
 })
 

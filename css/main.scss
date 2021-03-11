@@ -134,30 +134,10 @@ video {
   z-index: 0;
 }
 
-#landscape{
-  display: none;
-}
-
 .backgroundVideo {
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-@media (orientation: portrait) {
-  .backgroundVideo {
-    display: none;
-  }
-
-  #landscape{
-    display: flex;
-    height: 100vh;
-    color: #FFF;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-
 }
 
 #logo{
@@ -201,6 +181,7 @@ video {
   -webkit-text-stroke: 3px #000;
 
   &:focus,&:hover{
+    outline: none;
     color: white;
   }
 }
@@ -218,7 +199,7 @@ video {
 }
 
 #categoryCard{
-  visibility: hidden;
+  visibility: visible;
   position: fixed;
   display: flex;
   left: 0;
@@ -242,13 +223,14 @@ video {
   text-decoration: none;
   color: #000;
 
-  &:focus, &:hover{
+  &:focus,&:hover{
+    outline: none;
     color: #98282B;
   }
 }
 
 #questionCard{
-  visibility: visible;
+  visibility: hidden;
   display: flex;
   height: calc((100vh - 40vh) - 15rem);
   padding: 5rem;
@@ -260,7 +242,7 @@ video {
 }
 
 #interfaceOptions{
-  visibility: visible;
+  visibility: hidden;
   display: flex;
   height: 40vh;
   flex-wrap: wrap;
@@ -287,6 +269,52 @@ video {
   text-align: center;
 
   &:focus,&:hover{
+    outline: none;
     border: 1rem solid #98282B;
   }
+}
+
+#portraitNotification{
+  display: none;
+}
+
+@media (orientation: portrait) {
+  .backgroundVideo {
+    display: none;
+  }
+
+  #interface{
+    display: flex;
+    height: calc(100vh - 5rem);
+    width: calc(100% - 5rem);
+    padding: 2.5rem;
+    color: #FFF;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    border: unset;
+  }
+
+  #categoryCard, #questionCard, #interfaceOptions{
+    display: none;
+  }
+
+  #portraitNotification{
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+    z-index: 10;
+
+    a{
+      display: inline-block;
+      color: #000;
+      margin: 2.5rem;
+      background-color: #FFF;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+
 }
