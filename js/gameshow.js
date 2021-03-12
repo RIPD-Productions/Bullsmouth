@@ -2,6 +2,9 @@ const bullsmouthVideo = document.getElementById('bullsmouthVideo')
 const userInterface = document.getElementById('interface')
 const questionCard = document.getElementById('questionCard')
 const answerSelector = document.getElementsByClassName('answer')
+const interfaceOptions = document.getElementById('interfaceOptions')
+
+const categoryCard = document.getElementById('categoryCard')
 
 function loadJSON(requestURL){
     const request = new XMLHttpRequest()
@@ -27,6 +30,12 @@ function switchVideo(){
                 bullsmouthVideo.src = videos[videoIndex++]
                 bullsmouthVideo.play()
 
+                if(videoIndex > 0){
+                    userInterface.id = "interface"
+                    bullsmouthVideo.pause()
+                }
+
+
                 if(videoIndex > videos.length){
                     bullsmouthVideo.src = videos[0]
                     bullsmouthVideo.play()
@@ -36,6 +45,8 @@ function switchVideo(){
 
         })
     })
+
+
 }
 
 
@@ -52,9 +63,16 @@ let videos = ['./assets/vid/sea.mp4','./assets/vid/flowers.mp4','./assets/vid/cl
 
 switchVideo()
 
-if(answerSelector.length > 0){
-    for(let i = 0; i < answerSelector.length; i++) {
+if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "visible"){
+    for(let i = 0; i < categorySelector.length; i++){
+        categorySelector[i].addEventListener('click', () => {
+            alert('false')
+        })
+    }
+}
 
+if(answerSelector.length > 0 && window.getComputedStyle(interfaceOptions).visibility === "visible"){
+    for(let i = 0; i < answerSelector.length; i++){
         if (answerSelector[i] === answerSelector[1]) {
             answerSelector[i].addEventListener('click', () => {
                 darts++

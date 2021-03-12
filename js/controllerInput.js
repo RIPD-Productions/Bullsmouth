@@ -10,7 +10,106 @@ let answerLength = (answerSelector.length - 1)
 let categoryIndex = 0
 let categoryLength = (categorySelector.length - 1)
 
-console.log(categorySelector)
+function isElement(uiElement){
+    return uiElement.length > 0
+}
+
+function isVisible(uiElement){
+    return window.getComputedStyle(uiElement).visibility === "visible"
+}
+
+function navUp(){
+
+    if(isElement(navSelector)){
+        navIndex--
+
+        if(navIndex < 0){
+            navIndex = navLength
+        }
+
+        navSelector[navIndex].focus()
+    }
+
+    if(isElement(categorySelector) && isVisible(categoryCard)){
+        categoryIndex--
+
+        if(categoryIndex < 0){
+            categoryIndex = categoryLength
+        }
+
+        categorySelector[categoryIndex].focus()
+    }
+
+    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+        answerIndex--
+
+        if(answerIndex < 0){
+            answerIndex = answerLength
+        }
+
+        answerSelector[answerIndex].focus()
+    }
+}
+
+function navDown(){
+    if(isElement(navSelector)){
+        navIndex++
+
+        if(navIndex > navLength){
+            navIndex = 0
+        }
+
+        navSelector[navIndex].focus()
+    }
+
+    if(isElement(categorySelector) > 0 && isVisible(categoryCard)){
+        categoryIndex++
+
+        if(categoryIndex > categoryLength){
+            categoryIndex = 0
+        }
+
+        categorySelector[categoryIndex].focus()
+    }
+
+    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+        answerIndex++
+
+        if(answerIndex > answerLength){
+            answerIndex = 0
+        }
+
+        answerSelector[answerIndex].focus()
+    }
+}
+
+function navLeft(){
+    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+
+        answerSelector[answerIndex].focus()
+    }
+}
+
+function navRight(){
+    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+
+        answerSelector[answerIndex].focus()
+    }
+}
+
+function navConfirm(){
+    if(isElement(navSelector)){
+        navSelector[navIndex].click()
+    }
+
+    if(isElement(categorySelector)){
+        categorySelector[categoryIndex].click()
+    }
+
+    if(isElement(answerSelector)){
+        answerSelector[answerIndex].click()
+    }
+}
 
 function gamepadInput(){
 
@@ -21,93 +120,23 @@ function gamepadInput(){
         if(b[i].pressed === true){
             //D-Pad Up
             if(b[12].pressed === true){
-
-                if(navSelector.length > 0){
-
-                    navIndex--
-
-                    if(navIndex < 0){
-                        navIndex = navLength
-                    }
-
-                    navSelector[navIndex].focus()
-                }
-
-                if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "visible"){
-
-                    categoryIndex--
-
-                    if(categoryIndex < 0){
-                        categoryIndex = categoryLength
-                    }
-
-                    categorySelector[categoryIndex].focus()
-                }
-
-/*                if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "hidden"){
-
-                    console.log('I am invisible')
-                }*/
-
-                if(answerSelector.length > 0){
-                    answerIndex--
-
-                    if(answerIndex < 0){
-                        answerIndex = answerLength
-                    }
-
-                    answerSelector[answerIndex].focus()
-                }
-
+                navUp()
             }
             //D-Pad Down
             if(b[13].pressed === true){
-
-                if(navSelector.length > 0){
-
-                    navIndex++
-
-                    if(navIndex > navLength){
-                        navIndex = 0
-                    }
-
-                    navSelector[navIndex].focus()
-                }
-
-                if(categorySelector.length > 0){
-
-                    categoryIndex++
-
-                    if(categoryIndex > categoryLength){
-                        categoryIndex = 0
-                    }
-
-                    categorySelector[categoryIndex].focus()
-                }
-
-                if(answerSelector.length > 0){
-
-                    answerIndex++
-
-                    if(answerIndex > answerLength){
-                        answerIndex = 0
-                    }
-
-                    answerSelector[answerIndex].focus()
-                }
-
+                navDown()
+            }
+            //D-Pad Left
+            if(b[14].pressed === true){
+                navLeft()
+            }
+            //D-Pad Right
+            if(b[15].pressed === true){
+                navRight()
             }
             //A
             if(b[0].pressed === true){
-
-                if(navSelector.length > 0){
-                    navSelector[navIndex].click()
-                }
-
-                if(answerSelector.length > 0){
-                    answerSelector[answerIndex].click()
-                }
-
+                navConfirm()
             }
             //B
             if(b[1].pressed === true){
