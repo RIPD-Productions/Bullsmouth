@@ -27,6 +27,10 @@ function isVisible(uiElement){
     return window.getComputedStyle(uiElement).visibility === "visible"
 }
 
+function setVisibility(uiElement, visibility){
+    return uiElement.style.visibility = visibility
+}
+
 function pickArray(min, max) {
     let numbers = [];
     for (let i = 0; i < 3; i++) {

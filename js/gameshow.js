@@ -43,35 +43,43 @@ bullsmouthVideo.play()
 
 switchVideo()
 
-if(isElement('categoryCard')) {
+questionsJSON.onload = function () {
+    const bullsmouthQuestions = questionsJSON.response
+    const categories = bullsmouthQuestions['bullsmouthQuestions']['category'];
 
-    questionsJSON.onload = function () {
-        const bullsmouthQuestions = questionsJSON.response
-        const categories = bullsmouthQuestions['bullsmouthQuestions']['category'];
+    if (isElement('categoryCard')) {
 
         for (let i = 0; i < categorySelection.length; i++) {
-            const categoryItem = document.createElement('li');
-            const categoryName = document.createElement('a');
+            const categoryItem = document.createElement('li')
+            const categoryName = document.createElement('a')
 
             categoryName.setAttribute('class', 'categoryOption')
             categoryName.innerHTML = categories[categorySelection[i]].categoryName
-            categoryName.setAttribute('href', '#');
+            categoryName.setAttribute('href', '#')
+            categoryName.setAttribute('data-index', categorySelection[i])
 
-            categoryList.appendChild(categoryItem);
+            categoryList.appendChild(categoryItem)
             categoryItem.appendChild(categoryName)
 
         }
     }
 }
 
-if(isElement('categoryCard') && isVisible(categoryCard)){
+categoryList.addEventListener('click', (event) => {
 
-    for(let i = 0; i < categorySelector.length; i++){
-        categorySelector[i].addEventListener('click', () => {
-            alert('false')
-        })
+    if(event.target.classList.contains('categoryOption')) {
+
+        let categoryIndex = event.target.getAttribute('data-index')
+
+        setVisibility(categoryCard,'hidden')
+        setVisibility(interfaceOptions, 'visible')
+        setVisibility(questionCard,'visibile')
+
+        console.log(categoryIndex)
     }
-}
+})
+
+
 
 if(isElement('answerSelector') && isVisible(interfaceOptions)){
     for(let i = 0; i < answerSelector.length; i++){
