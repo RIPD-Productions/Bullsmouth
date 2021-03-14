@@ -1,6 +1,3 @@
-const navSelector = document.getElementsByClassName('nav')
-const categorySelector = document.getElementsByClassName('categoryOption')
-
 let navIndex = 0
 let navLength = (navSelector.length - 1)
 
@@ -10,17 +7,9 @@ let answerLength = (answerSelector.length - 1)
 let categoryIndex = 0
 let categoryLength = (categorySelector.length - 1)
 
-function isElement(uiElement){
-    return uiElement.length > 0
-}
-
-function isVisible(uiElement){
-    return window.getComputedStyle(uiElement).visibility === "visible"
-}
-
 function navUp(){
 
-    if(isElement(navSelector)){
+    if(isElement('navSelector')){
         navIndex--
 
         if(navIndex < 0){
@@ -30,7 +19,7 @@ function navUp(){
         navSelector[navIndex].focus()
     }
 
-    if(isElement(categorySelector) && isVisible(categoryCard)){
+    if(isElement('categorySelector') && isVisible(categoryCard)){
         categoryIndex--
 
         if(categoryIndex < 0){
@@ -40,8 +29,8 @@ function navUp(){
         categorySelector[categoryIndex].focus()
     }
 
-    if(isElement(answerSelector) && isVisible(interfaceOptions)){
-        answerIndex--
+    if(isElement('answerSelector') && isVisible(interfaceOptions)){
+        answerIndex-=2
 
         if(answerIndex < 0){
             answerIndex = answerLength
@@ -52,7 +41,7 @@ function navUp(){
 }
 
 function navDown(){
-    if(isElement(navSelector)){
+    if(isElement('navSelector')){
         navIndex++
 
         if(navIndex > navLength){
@@ -62,7 +51,7 @@ function navDown(){
         navSelector[navIndex].focus()
     }
 
-    if(isElement(categorySelector) > 0 && isVisible(categoryCard)){
+    if(isElement('categorySelector') > 0 && isVisible(categoryCard)){
         categoryIndex++
 
         if(categoryIndex > categoryLength){
@@ -72,8 +61,8 @@ function navDown(){
         categorySelector[categoryIndex].focus()
     }
 
-    if(isElement(answerSelector) && isVisible(interfaceOptions)){
-        answerIndex++
+    if(isElement('answerSelector') && isVisible(interfaceOptions)){
+        answerIndex+=2
 
         if(answerIndex > answerLength){
             answerIndex = 0
@@ -84,29 +73,39 @@ function navDown(){
 }
 
 function navLeft(){
-    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+    if(isElement('answerSelector') && isVisible(interfaceOptions)){
+        answerIndex--
+
+        if(answerIndex < 0){
+            answerIndex = answerLength
+        }
 
         answerSelector[answerIndex].focus()
     }
 }
 
 function navRight(){
-    if(isElement(answerSelector) && isVisible(interfaceOptions)){
+    if(isElement('answerSelector') && isVisible(interfaceOptions)){
+        answerIndex++
+
+        if(answerIndex > answerLength){
+            answerIndex = 0
+        }
 
         answerSelector[answerIndex].focus()
     }
 }
 
 function navConfirm(){
-    if(isElement(navSelector)){
+    if(isElement('navSelector')){
         navSelector[navIndex].click()
     }
 
-    if(isElement(categorySelector)){
+    if(isElement('categorySelector')){
         categorySelector[categoryIndex].click()
     }
 
-    if(isElement(answerSelector)){
+    if(isElement('answerSelector')){
         answerSelector[answerIndex].click()
     }
 }

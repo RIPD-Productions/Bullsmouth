@@ -1,23 +1,13 @@
-const bullsmouthVideo = document.getElementById('bullsmouthVideo')
-const userInterface = document.getElementById('interface')
-const questionCard = document.getElementById('questionCard')
-const answerSelector = document.getElementsByClassName('answer')
-const interfaceOptions = document.getElementById('interfaceOptions')
+const questionsJSON = loadJSON('./assets/json/questions.json')
+const videoJSON = loadJSON('./assets/json/video.json')
 
-const categoryCard = document.getElementById('categoryCard')
+let categorySelection = pickArray(0,4)
+let questionSelection = pickArray(0,4)
 
-function loadJSON(requestURL){
-    const request = new XMLHttpRequest()
+let darts = 0
+let videoIndex = 0
 
-    request.open("GET", requestURL, true)
-
-    request.responseType = 'json'
-    request.send()
-
-    return request
-}
-
-bullsmouthVideo.play()
+let videos = ['./assets/vid/sea.mp4','./assets/vid/flowers.mp4','./assets/vid/clouds.mp4']
 
 function switchVideo(){
     bullsmouthVideo.addEventListener('loadedmetadata', function (){
@@ -49,21 +39,33 @@ function switchVideo(){
 
 }
 
-
-const questionsJSON = loadJSON('./assets/json/questions.json')
-const videoJSON = loadJSON('./assets/json/video.json')
-
-
-/*console.log(questionsJSON)*/
-
-let darts = 0
-let videoIndex = 0
-
-let videos = ['./assets/vid/sea.mp4','./assets/vid/flowers.mp4','./assets/vid/clouds.mp4']
+bullsmouthVideo.play()
 
 switchVideo()
 
-if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibility === "visible"){
+if(isElement('categoryCard')) {
+
+    questionsJSON.onload = function () {
+        const bullsmouthQuestions = questionsJSON.response
+        const categories = bullsmouthQuestions['bullsmouthQuestions']['category'];
+
+        for (let i = 0; i < categorySelection.length; i++) {
+            const categoryItem = document.createElement('li');
+            const categoryName = document.createElement('a');
+
+            categoryName.setAttribute('class', 'categoryOption')
+            categoryName.innerHTML = categories[categorySelection[i]].categoryName
+            categoryName.setAttribute('href', '#');
+
+            categoryList.appendChild(categoryItem);
+            categoryItem.appendChild(categoryName)
+
+        }
+    }
+}
+
+if(isElement('categoryCard') && isVisible(categoryCard)){
+
     for(let i = 0; i < categorySelector.length; i++){
         categorySelector[i].addEventListener('click', () => {
             alert('false')
@@ -71,7 +73,7 @@ if(categorySelector.length > 0 && window.getComputedStyle(categoryCard).visibili
     }
 }
 
-if(answerSelector.length > 0 && window.getComputedStyle(interfaceOptions).visibility === "visible"){
+if(isElement('answerSelector') && isVisible(interfaceOptions)){
     for(let i = 0; i < answerSelector.length; i++){
         if (answerSelector[i] === answerSelector[1]) {
             answerSelector[i].addEventListener('click', () => {
