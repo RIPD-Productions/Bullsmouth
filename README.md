@@ -5,5 +5,5 @@ This project was created as part of a Developing Video Experiences module within
 ## Team
 * Scott Cottam
 * Tom Anderson
-* Simon Goodwin
+* Simon Godwin
 * Suzy Murgatroyd 
