@@ -4,7 +4,7 @@ let navLength = (navSelector.length - 1)
 let answerIndex = 0
 let answerLength = (answerSelector.length - 1)
 
-let categoryIndex = 0
+let categoryNavIndex = 0
 let categoryLength = (categorySelector.length - 1)
 
 function navUp(){
@@ -20,13 +20,13 @@ function navUp(){
     }
 
     if(isElement('categorySelector') && isVisible(categoryCard)){
-        categoryIndex--
+        categoryNavIndex--
 
-        if(categoryIndex < 0){
-            categoryIndex = categoryLength
+        if(categoryNavIndex < 0){
+            categoryNavIndex = categoryLength
         }
 
-        categorySelector[categoryIndex].focus()
+        categorySelector[categoryNavIndex].focus()
     }
 
     if(isElement('answerSelector') && isVisible(interfaceOptions)){
@@ -52,13 +52,13 @@ function navDown(){
     }
 
     if(isElement('categorySelector') > 0 && isVisible(categoryCard)){
-        categoryIndex++
+        categoryNavIndex++
 
-        if(categoryIndex > categoryLength){
-            categoryIndex = 0
+        if(categoryNavIndex > categoryLength){
+            categoryNavIndex = 0
         }
 
-        categorySelector[categoryIndex].focus()
+        categorySelector[categoryNavIndex].focus()
     }
 
     if(isElement('answerSelector') && isVisible(interfaceOptions)){
@@ -102,7 +102,7 @@ function navConfirm(){
     }
 
     if(isElement('categorySelector')){
-        categorySelector[categoryIndex].click()
+        categorySelector[categoryNavIndex].click()
     }
 
     if(isElement('answerSelector')){

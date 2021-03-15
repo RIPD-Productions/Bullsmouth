@@ -1,4 +1,4 @@
-const questionsJSON = loadJSON('./assets/json/questions.json')
+const categoryJSON = loadJSON('./assets/json/questions.json')
 const videoJSON = loadJSON('./assets/json/video.json')
 
 let categorySelection = pickArray(0,4)
@@ -43,9 +43,9 @@ bullsmouthVideo.play()
 
 switchVideo()
 
-questionsJSON.onload = function () {
-    const bullsmouthQuestions = questionsJSON.response
-    const categories = bullsmouthQuestions['bullsmouthQuestions']['category'];
+categoryJSON.onload = function () {
+    const bullsmouthQuestions = categoryJSON.response
+    const categories = bullsmouthQuestions['bullsmouthQuestions']['category']
 
     if (isElement('categoryCard')) {
 
@@ -65,17 +65,28 @@ questionsJSON.onload = function () {
     }
 }
 
-categoryList.addEventListener('click', (event) => {
+categoryList.addEventListener('click', function(event){
 
     if(event.target.classList.contains('categoryOption')) {
-
-        let categoryIndex = event.target.getAttribute('data-index')
+        event.preventDefault()
 
         setVisibility(categoryCard,'hidden')
         setVisibility(interfaceOptions, 'visible')
-        setVisibility(questionCard,'visibile')
+        setVisibility(questionCard,'visible')
 
-        console.log(categoryIndex)
+        let index = event.target.getAttribute('data-index')
+
+        const questionsJSON = loadJSON('./assets/json/questions.json')
+
+        questionsJSON.onload = function () {
+            const bullsmouthQuestions = questionsJSON.response
+            const questions = bullsmouthQuestions['bullsmouthQuestions']['category'][index]
+
+            console.log(questions)
+
+        }
+
+
     }
 })
 
