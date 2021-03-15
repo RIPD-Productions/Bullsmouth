@@ -5,7 +5,28 @@
         "categoryName": "Category 1",
         "question": [
           {
-            "questionText": "Test question",
+            "questionText": "Test question 1",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              },
+              {
+                "answerText": "test answer 3",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 4",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Test question 2",
             "answer": [
               {
                 "answerText": "test answer",

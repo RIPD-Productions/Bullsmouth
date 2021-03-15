@@ -2,7 +2,6 @@ const categoryJSON = loadJSON('./assets/json/questions.json')
 const videoJSON = loadJSON('./assets/json/video.json')
 
 let categorySelection = pickArray(0,4)
-let questionSelection = pickArray(0,4)
 
 let darts = 0
 let videoIndex = 0
@@ -65,7 +64,7 @@ categoryJSON.onload = function () {
     }
 }
 
-categoryList.addEventListener('click', function(event){
+categoryList.addEventListener('click', (event) =>{
 
     if(event.target.classList.contains('categoryOption')) {
         event.preventDefault()
@@ -74,36 +73,64 @@ categoryList.addEventListener('click', function(event){
         setVisibility(interfaceOptions, 'visible')
         setVisibility(questionCard,'visible')
 
-        let index = event.target.getAttribute('data-index')
+        let catIndex = event.target.dataset.index
 
         const questionsJSON = loadJSON('./assets/json/questions.json')
 
         questionsJSON.onload = function () {
             const bullsmouthQuestions = questionsJSON.response
-            const questions = bullsmouthQuestions['bullsmouthQuestions']['category'][index]
+            let category = bullsmouthQuestions['bullsmouthQuestions']['category'][catIndex]
 
-            console.log(questions)
+/*            let questionSelection = pickArray(0,4)*/
+
+            let question = category['question'][0]
+
+            questionCard.innerHTML = question.questionText
+
+            let answers = question.answer
+
+            answers.forEach(answer => {
+                const answerDiv = document.createElement('div')
+                answerDiv.setAttribute('class','optionsChild')
+
+                const answerOption = document.createElement('a')
+                answerOption.innerHTML = answer.answerText
+                answerOption.setAttribute('class','answer')
+                answerOption.setAttribute('href', '#')
+                answerOption.setAttribute('data-correct', answer.correct)
+
+                interfaceOptions.appendChild(answerDiv)
+                answerDiv.appendChild(answerOption)
+            })
 
         }
 
+        interfaceOptions.addEventListener('click', (event)=> {
+            if(event.target.classList.contains('answer')) {
+                event.preventDefault()
+
+                let correctAnswer = event.target.dataset.correct
+
+                if(correctAnswer !== 'false'){
+
+                    setVisibility(userInterface, 'hidden')
+                    setVisibility(interfaceOptions, 'hidden')
+                    setVisibility(questionCard,'hidden')
+
+                    bullsmouthVideo.src = './assets/vid/sea.mp4'
+                    bullsmouthVideo.play()
+                } else {
+
+                    setVisibility(userInterface, 'hidden')
+                    setVisibility(interfaceOptions, 'hidden')
+                    setVisibility(questionCard,'hidden')
+
+                    bullsmouthVideo.src = './assets/vid/flowers.mp4'
+                    bullsmouthVideo.play()
+                }
+
+            }
+        })
 
     }
 })
-
-
-
-if(isElement('answerSelector') && isVisible(interfaceOptions)){
-    for(let i = 0; i < answerSelector.length; i++){
-        if (answerSelector[i] === answerSelector[1]) {
-            answerSelector[i].addEventListener('click', () => {
-                darts++
-                alert('true')
-                console.log(darts)
-            })
-        } else {
-            answerSelector[i].addEventListener('click', () => {
-                alert('false')
-            })
-        }
-    }
-}
