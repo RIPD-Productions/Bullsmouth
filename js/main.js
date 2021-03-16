@@ -8,6 +8,7 @@ const interfaceOptions = document.getElementById('interfaceOptions')
 const categoryCard = document.getElementById('categoryCard')
 const categoryList = document.getElementById('categoryList')
 
+
 function loadJSON(requestURL){
     const request = new XMLHttpRequest()
 

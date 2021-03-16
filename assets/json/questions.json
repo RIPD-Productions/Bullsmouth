@@ -29,12 +29,20 @@
             "questionText": "Test question 2",
             "answer": [
               {
-                "answerText": "test answer",
+                "answerText": "test answer (q2)",
                 "correct": false
               },
               {
-                "answerText": "test answer 2",
+                "answerText": "test answer 2 (q2)",
                 "correct": true
+              },
+              {
+                "answerText": "test answer 3 (q2)",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 4 (q2)",
+                "correct": false
               }
             ]
           }

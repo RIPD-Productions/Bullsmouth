@@ -3,44 +3,12 @@ const videoJSON = loadJSON('./assets/json/video.json')
 
 let categorySelection = pickArray(0,4)
 
+let questionSelection = pickArray(0,4)
+const qArray = [0,1]
+
 let darts = 0
-let videoIndex = 0
-
-let videos = ['./assets/vid/sea.mp4','./assets/vid/flowers.mp4','./assets/vid/clouds.mp4']
-
-function switchVideo(){
-    bullsmouthVideo.addEventListener('loadedmetadata', function (){
-        let videoDuration = bullsmouthVideo.duration
-
-        bullsmouthVideo.addEventListener("timeupdate", function (){
-            let videoCurrentTime = bullsmouthVideo.currentTime
-
-            if(videoCurrentTime === videoDuration){
-                bullsmouthVideo.src = videos[videoIndex++]
-                bullsmouthVideo.play()
-
-                if(videoIndex > 0){
-                    userInterface.id = "interface"
-                    bullsmouthVideo.pause()
-                }
-
-
-                if(videoIndex > videos.length){
-                    bullsmouthVideo.src = videos[0]
-                    bullsmouthVideo.play()
-                }
-
-            }
-
-        })
-    })
-
-
-}
 
 bullsmouthVideo.play()
-
-switchVideo()
 
 categoryJSON.onload = function () {
     const bullsmouthQuestions = categoryJSON.response
@@ -66,24 +34,14 @@ categoryJSON.onload = function () {
 
 categoryList.addEventListener('click', (event) =>{
 
-    if(event.target.classList.contains('categoryOption')) {
-        event.preventDefault()
-
-        setVisibility(categoryCard,'hidden')
-        setVisibility(interfaceOptions, 'visible')
-        setVisibility(questionCard,'visible')
-
-        let catIndex = event.target.dataset.index
-
+    function getQuestions(catIndex, questionIndex){
         const questionsJSON = loadJSON('./assets/json/questions.json')
 
         questionsJSON.onload = function () {
             const bullsmouthQuestions = questionsJSON.response
             let category = bullsmouthQuestions['bullsmouthQuestions']['category'][catIndex]
 
-/*            let questionSelection = pickArray(0,4)*/
-
-            let question = category['question'][0]
+            let question = category['question'][qArray[questionIndex]]
 
             questionCard.innerHTML = question.questionText
 
@@ -102,8 +60,19 @@ categoryList.addEventListener('click', (event) =>{
                 interfaceOptions.appendChild(answerDiv)
                 answerDiv.appendChild(answerOption)
             })
-
         }
+    }
+
+    if(event.target.classList.contains('categoryOption')) {
+        event.preventDefault()
+
+        setVisibility(categoryCard,'hidden')
+        setVisibility(interfaceOptions, 'visible')
+        setVisibility(questionCard,'visible')
+
+        let catIndex = event.target.dataset.index
+
+        getQuestions(0,0)
 
         interfaceOptions.addEventListener('click', (event)=> {
             if(event.target.classList.contains('answer')) {
@@ -111,26 +80,39 @@ categoryList.addEventListener('click', (event) =>{
 
                 let correctAnswer = event.target.dataset.correct
 
+                function interfaceVisibility(visibility){
+                    setVisibility(interfaceOptions, visibility)
+                    setVisibility(questionCard, visibility)
+                    setVisibility(userInterface, visibility)
+                }
+
+                while (interfaceOptions.firstChild) {
+                    interfaceOptions.removeChild(interfaceOptions.firstChild);
+                }
+
                 if(correctAnswer !== 'false'){
-
-                    setVisibility(userInterface, 'hidden')
-                    setVisibility(interfaceOptions, 'hidden')
-                    setVisibility(questionCard,'hidden')
-
-                    bullsmouthVideo.src = './assets/vid/sea.mp4'
-                    bullsmouthVideo.play()
-                } else {
-
-                    setVisibility(userInterface, 'hidden')
-                    setVisibility(interfaceOptions, 'hidden')
-                    setVisibility(questionCard,'hidden')
+                    interfaceVisibility('hidden')
 
                     bullsmouthVideo.src = './assets/vid/flowers.mp4'
                     bullsmouthVideo.play()
-                }
 
+                    bullsmouthVideo.addEventListener('ended', () => {
+                        interfaceVisibility('visible')
+                        getQuestions(0,1)
+                    })
+                } else {
+                    interfaceVisibility('hidden')
+
+                    bullsmouthVideo.src = './assets/vid/flowers.mp4'
+                    bullsmouthVideo.play()
+
+                    bullsmouthVideo.addEventListener('ended', () => {
+                        interfaceVisibility('visible')
+                        getQuestions(0,1)
+                    })
+
+                }
             }
         })
-
     }
 })
