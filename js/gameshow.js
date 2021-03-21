@@ -3,12 +3,24 @@ const videoJSON = loadJSON('./assets/json/video.json')
 
 let categorySelection = pickArray(0,4)
 
-let questionSelection = pickArray(0,4)
-const qArray = [0,1]
+let questionSelection = ["0","1"]/* pickArray(0,3)*/
+
+let qIndex = 0
 
 let darts = 0
 
-bullsmouthVideo.play()
+setVisibility(userInterface,'hidden')
+setVisibility(categoryCard,'hidden')
+setVisibility(interfaceOptions, 'hidden')
+
+playVideo('./assets/vid/flowers.mp4')
+/*playVideo('./assets/vid/introduction.mp4')*/
+
+bullsmouthVideo.addEventListener('ended', () => {
+    setVisibility(userInterface,'visible')
+    setVisibility(categoryCard,'visible')
+})
+
 
 categoryJSON.onload = function () {
     const bullsmouthQuestions = categoryJSON.response
@@ -41,18 +53,20 @@ categoryList.addEventListener('click', (event) =>{
             const bullsmouthQuestions = questionsJSON.response
             let category = bullsmouthQuestions['bullsmouthQuestions']['category'][catIndex]
 
-            let question = category['question'][qArray[questionIndex]]
+            let question = category['question'][questionIndex]
 
             questionCard.innerHTML = question.questionText
 
-            let answers = question.answer
+            const answers = question.answer
+
+            console.log(answers)
 
             answers.forEach(answer => {
                 const answerDiv = document.createElement('div')
                 answerDiv.setAttribute('class','optionsChild')
 
                 const answerOption = document.createElement('a')
-                answerOption.innerHTML = answer.answerText
+                answerOption.innerText = answer.answerText
                 answerOption.setAttribute('class','answer')
                 answerOption.setAttribute('href', '#')
                 answerOption.setAttribute('data-correct', answer.correct)
@@ -72,7 +86,7 @@ categoryList.addEventListener('click', (event) =>{
 
         let catIndex = event.target.dataset.index
 
-        getQuestions(0,0)
+        getQuestions(0, 0)
 
         interfaceOptions.addEventListener('click', (event)=> {
             if(event.target.classList.contains('answer')) {
@@ -92,26 +106,26 @@ categoryList.addEventListener('click', (event) =>{
 
                 if(correctAnswer !== 'false'){
                     interfaceVisibility('hidden')
-
-                    bullsmouthVideo.src = './assets/vid/flowers.mp4'
-                    bullsmouthVideo.play()
-
-                    bullsmouthVideo.addEventListener('ended', () => {
-                        interfaceVisibility('visible')
-                        getQuestions(0,1)
-                    })
+                    playVideo('./assets/vid/correct.mp4')
                 } else {
                     interfaceVisibility('hidden')
-
-                    bullsmouthVideo.src = './assets/vid/flowers.mp4'
-                    bullsmouthVideo.play()
-
-                    bullsmouthVideo.addEventListener('ended', () => {
-                        interfaceVisibility('visible')
-                        getQuestions(0,1)
-                    })
-
+                    playVideo('./assets/vid/incorrect.mp4')
                 }
+
+                qIndex++
+
+                bullsmouthVideo.addEventListener('ended', () => {
+                    if(qIndex >= 3) {
+                        interfaceVisibility('hidden')
+                        setVisibility(categoryCard,'hidden')
+                        playVideo('./assets/vid/roundOneEnd.mp4')
+                    } else {
+                        interfaceVisibility('visible')
+                        setVisibility(categoryCard,'hidden')
+                    }
+                })
+
+                getQuestions(0,qIndex)
             }
         })
     }
