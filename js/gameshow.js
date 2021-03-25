@@ -28,6 +28,7 @@ window.addEventListener('storage', () => {
     function correctIncorrect1(correctAnswer){
         if (correctAnswer !== 'false') {
             interfaceVisibility('hidden')
+            darts++
             bullsmouthVideo.src = './assets/vid/correct.mp4'
             bullsmouthVideo.load()
             console.log('correct')
@@ -103,7 +104,7 @@ window.addEventListener('storage', () => {
         if (event.target.classList.contains('answer')) {
             event.preventDefault()
 
-            let correctAnswer = event.currentTarget.dataset.correct
+            let correctAnswer = event.target.dataset.correct
 
             while (interfaceOptions.firstChild) {
                 interfaceOptions.removeChild(interfaceOptions.firstChild);
@@ -119,6 +120,7 @@ window.addEventListener('storage', () => {
                     bullsmouthVideo.src = './assets/vid/roundOneEnd.mp4'
                     bullsmouthVideo.load()
                     bullsmouthVideo.play()
+                    console.log(darts)
 
                     bullsmouthVideo.addEventListener('ended', () => {
                         sessionStorage.setItem('round', '1')
@@ -136,14 +138,13 @@ window.addEventListener('storage', () => {
             getQuestions(0, qIndex)
         }
 
-        event.stopPropagation();
     }
 
     function roundTwo(event){
         if (event.target.classList.contains('answer')) {
             event.preventDefault()
 
-            let correctAnswer = event.currentTarget.dataset.correct
+            let correctAnswer = event.target.dataset.correct
 
             while (interfaceOptions.firstChild) {
                 interfaceOptions.removeChild(interfaceOptions.firstChild);
@@ -159,6 +160,7 @@ window.addEventListener('storage', () => {
                     bullsmouthVideo.src = './assets/vid/roundTwoEnd.mp4'
                     bullsmouthVideo.load()
                     bullsmouthVideo.play()
+                    console.log(darts)
 
                     bullsmouthVideo.addEventListener('ended', () => {
                         sessionStorage.setItem('round', '2')
@@ -176,7 +178,6 @@ window.addEventListener('storage', () => {
             getQuestions(0, qIndex)
         }
 
-        event.stopPropagation();
     }
 
     if (round === '0') {
@@ -220,16 +221,16 @@ window.addEventListener('storage', () => {
     } else if (round === '1') {
         qIndex = 0
 
+        setVisibility(userInterface, 'hidden')
+        setVisibility(categoryCard, 'hidden')
+        setVisibility(interfaceOptions, 'hidden')
+        setVisibility(questionCard, 'hidden')
+
         while (categoryList.firstChild) {
             categoryList.removeChild(categoryList.firstChild);
         }
 
         const categoryJSON = loadJSON('./assets/json/questions.json')
-
-        setVisibility(userInterface, 'hidden')
-        setVisibility(categoryCard, 'hidden')
-        setVisibility(interfaceOptions, 'hidden')
-        setVisibility(questionCard, 'hidden')
 
         bullsmouthVideo.src = './assets/vid/roundTwoStart.mp4'
         bullsmouthVideo.load()
