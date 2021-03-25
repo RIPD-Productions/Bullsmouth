@@ -8,26 +8,14 @@ const interfaceOptions = document.getElementById('interfaceOptions')
 const categoryCard = document.getElementById('categoryCard')
 const categoryList = document.getElementById('categoryList')
 
-function playVideo (videoFile){
-
-    if (videoFile === null){
-        bullsmouthVideo.pause()
-    } else {
-        bullsmouthVideo.src = videoFile
-    }
-
-    bullsmouthVideo.muted = false;
-    bullsmouthVideo.loop = false;
-    bullsmouthVideo.load()
-    bullsmouthVideo.play()
-}
-
 function loadJSON(requestURL){
     const request = new XMLHttpRequest()
 
     request.open("GET", requestURL, true)
 
+    request.timeout = 1000;
     request.responseType = 'json'
+
     request.send()
 
     return request
@@ -45,9 +33,9 @@ function setVisibility(uiElement, visibility){
     return uiElement.style.visibility = visibility
 }
 
-function pickArray(min, max) {
+function pickArray( min, max, total) {
     let numbers = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < total; i++) {
         let number =  Math.floor(Math.random() * max) + min;
         let check = numbers.includes(number);
 
