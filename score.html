@@ -16,10 +16,26 @@
 </head>
 <body>
     <div class="container">
+        <div id="logo">
+            <img src="assets/img/svg/logo.svg">
+        </div>
+        <div id="score">
+            <h1>Final Score</h1>
+            <h2 id="finalScore"></h2>
+
+            <form id="scoreForm" name="scoreForm">
+                <input type="hidden" id="finalScoreField" name="score" value="">
+                <label for="name">Enter Name</label><br>
+                <input id="name" name="name" type="text">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 </body>
 <footer>
     <script src="js/main.js"></script>
+    <script src="js/score.js"></script>
     <script src="js/controllerInput.js"></script>
     <script src="js/keyboardInput.js"></script>
 </footer>

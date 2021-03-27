@@ -88,10 +88,11 @@ video {
   font-size: clamp(0.75rem, calc(-0.2222rem + 5.4321vw), 1.5rem);
   ul{
     list-style: none;
+    padding: unset;
   }
 
   li{
-    padding-bottom: 0.75rem;
+    padding-bottom: 1rem;
 
     &:last-child{
       padding-bottom: unset;
@@ -186,6 +187,70 @@ video {
   }
 }
 
+#score {
+  height: calc(60vh - 2rem);
+  z-index: 1;
+  padding: 1rem;
+  text-align: center;
+
+  h1 {
+    font-size: clamp(4.5rem, calc(-0.2222rem + 5.4321vw), 10rem);
+    color: inherit;
+    text-shadow: 3px 3px 0 #000;
+    -webkit-text-stroke: 3px #000;
+    margin: unset;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, calc(-0.2222rem + 5.4321vw), 5rem);
+    color: #ffe300;
+    text-shadow: 3px 3px 0 #000;
+    -webkit-text-stroke: 3px #000;
+    margin: unset;
+  }
+}
+
+#scoreForm{
+  margin: 2rem;
+  font-size: calculateRem(40px);
+
+  input[type=text]{
+    height: calculateRem(30px);
+    padding: 0.75rem 2rem 0.75rem 2rem;
+    font-family: inherit;
+    margin: calculateRem(20px);
+    text-align: inherit;
+    border: 3px solid black;
+    transition: 500ms linear;
+    font-size: calculateRem(24px);
+
+    &:focus,&:hover{
+      border: 3px solid #98282B;
+    }
+  }
+
+  input[type=submit]{
+    display: inline-block;
+    height: auto;
+    background-color: #98282B;
+    color: #FFF;
+    font-family: inherit;
+    border: none;
+    font-size: calculateRem(38px);
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    box-shadow: 0 0 0 2px #000, 3px 3px 0 #000;
+    transition: 500ms linear;
+
+    &:hover{
+      background-color: #FFF;
+      color: #98282B;
+      box-shadow: 0 0 0 2px #000, 3px 3px 0 #000;
+
+    }
+  }
+
+}
+
 #interface{
   position: fixed;
   left: 0;
@@ -213,6 +278,21 @@ video {
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  &::before{
+    content: "";
+    position: fixed;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0.03;
+    z-index: -1;
+    background-image: url(../assets/img/svg/dartboard_black.svg);
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: cover;
+  }
 
   ul{
     list-style: none;
@@ -247,6 +327,22 @@ video {
   height: 40vh;
   flex-wrap: wrap;
   z-index: 2;
+
+  &::before{
+    content: "";
+    position: fixed;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0.03;
+    z-index: -1;
+    background-image: url(../assets/img/svg/dartboard_black.svg);
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
 }
 
 .optionsChild{
@@ -259,7 +355,7 @@ video {
   width: calc(100% - 4rem);
   height: calc(100% - 4rem);
   padding: 1rem;
-  border: 1rem solid #FFF;
+  border: 1rem solid rgba(255,255,255,.0);
   transition: 250ms linear;
   text-decoration: none;
   color: #000;
@@ -284,6 +380,7 @@ video {
   }
 
   #interface{
+    visibility: visible;
     display: flex;
     height: calc(100vh - 5rem);
     width: calc(100% - 5rem);
