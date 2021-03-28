@@ -19,6 +19,6 @@ scoreForm.addEventListener('formdata', (data) => {
     console.log(score)
 
     const request = new XMLHttpRequest()
-    request.open("POST", "/")
+    request.open("POST", "./src/setHighScores.php")
     request.send(score)
 })
