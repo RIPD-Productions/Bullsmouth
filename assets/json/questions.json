@@ -2,88 +2,193 @@
   "bullsmouthQuestions": {
     "category": [
       {
-        "categoryName": "History",
+        "categoryName": "Film",
         "question": [
           {
-            "questionText": "What year did George III die?",
+            "questionText": "Which animal in Madagascar in Alex",
             "answer": [
               {
-                "answerText": "1760",
+                "answerText": "Hippopotamus",
                 "correct": false
               },
               {
-                "answerText": "1952",
-                "correct": false
-              },
-              {
-                "answerText": "1820",
+                "answerText": "Lion",
                 "correct": true
               },
               {
-                "answerText": "1688",
+                "answerText": "Zebra",
+                "correct": false
+              },
+              {
+                "answerText": "Giraffe",
                 "correct": false
               }
             ]
           },
           {
-            "questionText": "Who crossed The Alps with elephants?",
+            "questionText": "Which character in Avengers carries a hammer?",
             "answer": [
               {
-                "answerText": "Napoleon Bonaparte",
+                "answerText": "Hulk",
                 "correct": false
               },
               {
-                "answerText": "Hannibal",
-                "correct": true
-              },
-              {
-                "answerText": "Adolph Hitler",
+                "answerText": "Spider-Man",
                 "correct": false
               },
               {
-                "answerText": "Julius Caesar",
-                "correct": false
-              }
-            ]
-          },
-          {
-            "questionText": "Ioseb Besarionis dze Jughashvili is the birth name of what Soviet leader?",
-            "answer": [
-              {
-                "answerText": "Leon Trotsky",
+                "answerText": "Wonder Woman",
                 "correct": false
               },
               {
-                "answerText": "Alexei Rykov",
-                "correct": false
-              },
-              {
-                "answerText": "Adolph Hitler",
-                "correct": false
-              },
-              {
-                "answerText": "Joseph Stalin",
+                "answerText": "Thor",
                 "correct": true
               }
             ]
           },
           {
-            "questionText": "Q4",
+            "questionText": "Where did Harry Potter go to school?",
             "answer": [
               {
-                "answerText": "Leon Trotsky",
+                "answerText": "Neverland",
                 "correct": false
               },
               {
-                "answerText": "Alexei Rykov",
+                "answerText": "Mordor",
                 "correct": false
               },
               {
-                "answerText": "Adolph Hitler",
+                "answerText": "Hogwarts",
+                "correct": true
+              },
+              {
+                "answerText": "Disneyland",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who was the main villain in Avengers: Infinity War?",
+            "answer": [
+              {
+                "answerText": "Thanos",
+                "correct": true
+              },
+              {
+                "answerText": "Malekith",
                 "correct": false
               },
               {
-                "answerText": "Joseph Stalin",
+                "answerText": "Nebula",
+                "correct": false
+              },
+              {
+                "answerText": "Ronan",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What is Darth Vader's real name?",
+            "answer": [
+              {
+                "answerText": "Luke Skywalker",
+                "correct": false
+              },
+              {
+                "answerText": "Ben Solo",
+                "correct": false
+              },
+              {
+                "answerText": "Anakin Skywalker",
+                "correct": true
+              },
+              {
+                "answerText": "Han Solo",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who sand the theme song from Titanic",
+            "answer": [
+              {
+                "answerText": "Celine Dion",
+                "correct": true
+              },
+              {
+                "answerText": "Madonna",
+                "correct": false
+              },
+              {
+                "answerText": "Beyonce",
+                "correct": false
+              },
+              {
+                "answerText": "Barbra Streisand",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What was the first horror movie to win an Oscar?",
+            "answer": [
+              {
+                "answerText": "Frankenstein",
+                "correct": false
+              },
+              {
+                "answerText": "Silence of The Lambs",
+                "correct": true
+              },
+              {
+                "answerText": "Get Out",
+                "correct": false
+              },
+              {
+                "answerText": "Insidious",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What was the first and only animated picture to be nominated for best picture?",
+            "answer": [
+              {
+                "answerText": "Snow White",
+                "correct": false
+              },
+              {
+                "answerText": "My Little Mermaid",
+                "correct": false
+              },
+              {
+                "answerText": "Beauty and The Beast",
+                "correct": true
+              },
+              {
+                "answerText": "Cinderella",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "How many meters across was the Death Stars exhaust port?",
+            "answer": [
+              {
+                "answerText": "3 Metres",
+                "correct": false
+              },
+              {
+                "answerText": "1 Metre",
+                "correct": false
+              },
+              {
+                "answerText": "4 Metres",
+                "correct": false
+              },
+              {
+                "answerText": "2 Metres",
                 "correct": true
               }
             ]
@@ -91,25 +196,222 @@
         ]
       },
       {
-        "categoryName": "General Knowledge",
+        "categoryName": "Music",
         "question": [
           {
-            "questionText": "Test question",
+            "questionText": "Who sings the song SexyBack?",
             "answer": [
               {
-                "answerText": "test answer",
+                "answerText": "Usher",
                 "correct": false
               },
               {
-                "answerText": "test answer 2",
+                "answerText": "Justin Timberlake",
                 "correct": true
+              },
+              {
+                "answerText": "Maroon 5",
+                "correct": false
+              },
+              {
+                "answerText": "Justin Bieber",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who sings the song Baby?",
+            "answer": [
+              {
+                "answerText": "Harry Styles",
+                "correct": false
+              },
+              {
+                "answerText": "Liam Payne",
+                "correct": false
+              },
+              {
+                "answerText": "Justin Bieber",
+                "correct": true
+              },
+              {
+                "answerText": "Ed Sheeran",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which mathematical symbol is not the same of an Ed Sheeran album?",
+            "answer": [
+              {
+                "answerText": "Plus",
+                "correct": false
+              },
+              {
+                "answerText": "Divide",
+                "correct": false
+              },
+              {
+                "answerText": "Subtract",
+                "correct": true
+              },
+              {
+                "answerText": "Multiply",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who sings Call Me Maybe?",
+            "answer": [
+              {
+                "answerText": "Taylor Swift",
+                "correct": false
+              },
+              {
+                "answerText": "Rihanna",
+                "correct": false
+              },
+              {
+                "answerText": "Carly Rae Jepsen",
+                "correct": true
+              },
+              {
+                "answerText": "Lana Del Ray",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "In which video does Michael Jackson play a zombie?",
+            "answer": [
+              {
+                "answerText": "Bad",
+                "correct": false
+              },
+              {
+                "answerText": "Beat It",
+                "correct": false
+              },
+              {
+                "answerText": "Speed Demon",
+                "correct": false
+              },
+              {
+                "answerText": "Thriller",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Which rapper topped the UK charts in 2010 with Pass Out?",
+            "answer": [
+              {
+                "answerText": "Tinie Tempah",
+                "correct": true
+              },
+              {
+                "answerText": "Tinchy Stryder",
+                "correct": false
+              },
+              {
+                "answerText": "Plan B",
+                "correct": false
+              },
+              {
+                "answerText": "Dizzee Rascal",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who was the youngest Beatle member?",
+            "answer": [
+              {
+                "answerText": "Paul McCartney",
+                "correct": false
+              },
+              {
+                "answerText": "John Lennon",
+                "correct": false
+              },
+              {
+                "answerText": "George Harrison",
+                "correct": true
+              },
+              {
+                "answerText": "Ringo Starr",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who sings the opening line on USA for Africa's hit We Are The World?",
+            "answer": [
+              {
+                "answerText": "Lionel Richie",
+                "correct": true
+              },
+              {
+                "answerText": "Michael Jackson",
+                "correct": false
+              },
+              {
+                "answerText": "Stevie Wonder",
+                "correct": false
+              },
+              {
+                "answerText": "Paul Simon",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Who played lead guitar on the Rolling Stone' Brown Sugar?",
+            "answer": [
+              {
+                "answerText": "Ronnie Wood",
+                "correct": false
+              },
+              {
+                "answerText": "Keith Richards",
+                "correct": false
+              },
+              {
+                "answerText": "Mick Taylor",
+                "correct": true
+              },
+              {
+                "answerText": "John Mayall",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which of these is NOT a song by Queen?",
+            "answer": [
+              {
+                "answerText": "Don't Stop Me Now",
+                "correct": false
+              },
+              {
+                "answerText": "Born to Run",
+                "correct": false
+              },
+              {
+                "answerText": "Bicycle Race",
+                "correct": true
+              },
+              {
+                "answerText": "Another One Bites the Dust",
+                "correct": false
               }
             ]
           }
         ]
       },
       {
-        "categoryName": "Sport",
+        "categoryName": "Video Games",
         "question": [
           {
             "questionText": "Test question",
@@ -145,7 +447,97 @@
         ]
       },
       {
-        "categoryName": "TV and Film",
+        "categoryName": "Mathematics",
+        "question": [
+          {
+            "questionText": "Test question",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryName": "Celebrities",
+        "question": [
+          {
+            "questionText": "Test question",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryName": "History",
+        "question": [
+          {
+            "questionText": "Test question",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryName": "Geography",
+        "question": [
+          {
+            "questionText": "Test question",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryName": "Food & Drink",
+        "question": [
+          {
+            "questionText": "Test question",
+            "answer": [
+              {
+                "answerText": "test answer",
+                "correct": false
+              },
+              {
+                "answerText": "test answer 2",
+                "correct": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryName": "English Literature",
         "question": [
           {
             "questionText": "Test question",
