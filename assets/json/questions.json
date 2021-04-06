@@ -1059,15 +1059,212 @@
         "categoryName": "Celebrities",
         "question": [
           {
-            "questionText": "Test question",
+            "questionText": "Who is the youngest of the Kanye West's children?",
             "answer": [
               {
-                "answerText": "test answer",
+                "answerText": "North West",
                 "correct": false
               },
               {
-                "answerText": "test answer 2",
+                "answerText": "Saint West",
+                "correct": false
+              },
+              {
+                "answerText": "Psalm West",
                 "correct": true
+              },
+              {
+                "answerText": "Chicago West",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What is Lady Gaga's real name?",
+            "answer": [
+              {
+                "answerText": "Stefani Joanne Angelina Germanotta",
+                "correct": true
+              },
+              {
+                "answerText": "Simone Joanne Angelina Germanotta",
+                "correct": false
+              },
+              {
+                "answerText": "Sophia Joanne Angelina Germanotta",
+                "correct": false
+              },
+              {
+                "answerText": "Stella Joanne Angelina Germanotta",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which former James Bond actor died in May 2017",
+            "answer": [
+              {
+                "answerText": "Sean Connery",
+                "correct": false
+              },
+              {
+                "answerText": "Pierce Brosnan",
+                "correct": false
+              },
+              {
+                "answerText": "Roger Moore",
+                "correct": true
+              },
+              {
+                "answerText": "Daniel Craig",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "In which city did Ant and Dec grow up?",
+            "answer": [
+              {
+                "answerText": "Birmingham",
+                "correct": false
+              },
+              {
+                "answerText": "Essex",
+                "correct": false
+              },
+              {
+                "answerText": "Manchester",
+                "correct": false
+              },
+              {
+                "answerText": "Newcastle-upon-Tyne",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Which James Bond song did Adele top the charts with?",
+            "answer": [
+              {
+                "answerText": "Spectre",
+                "correct": false
+              },
+              {
+                "answerText": "Skyfall",
+                "correct": true
+              },
+              {
+                "answerText": "Licence to Kill",
+                "correct": false
+              },
+              {
+                "answerText": "Casino Royale",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What is Harry Style's middle name?",
+            "answer": [
+              {
+                "answerText": "James",
+                "correct": false
+              },
+              {
+                "answerText": "Dylan",
+                "correct": false
+              },
+              {
+                "answerText": "Edward",
+                "correct": true
+              },
+              {
+                "answerText": "Robert",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which celebrity rose to fame on Channel 4's Gogglebox and went on to win I'm a Celebrity in 2016?",
+            "answer": [
+              {
+                "answerText": "Scarlet Moffat",
+                "correct": true
+              },
+              {
+                "answerText": "Giovanna Fletcher",
+                "correct": false
+              },
+              {
+                "answerText": "Jacqueline Jossa",
+                "correct": false
+              },
+              {
+                "answerText": "Georgia 'Toff' Toffolo",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "How old is Prince Harry?",
+            "answer": [
+              {
+                "answerText": "33",
+                "correct": false
+              },
+              {
+                "answerText": "34",
+                "correct": false
+              },
+              {
+                "answerText": "35",
+                "correct": false
+              },
+              {
+                "answerText": "36",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Which Kardashian has children called Mason, Penelope, and Reign?",
+            "answer": [
+              {
+                "answerText": "Kim Kardashian",
+                "correct": false
+              },
+              {
+                "answerText": "Khloe Kardashian",
+                "correct": false
+              },
+              {
+                "answerText": "Kylie Jenner",
+                "correct": false
+              },
+              {
+                "answerText": "Kourtney Kardashian",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Which member of The Beatles died first?",
+            "answer": [
+              {
+                "answerText": "John Lennon",
+                "correct": true
+              },
+              {
+                "answerText": "Ringo Starr",
+                "correct": false
+              },
+              {
+                "answerText": "George Harrison",
+                "correct": false
+              },
+              {
+                "answerText": "Paul McCartney",
+                "correct": false
               }
             ]
           }
@@ -1077,15 +1274,212 @@
         "categoryName": "History",
         "question": [
           {
-            "questionText": "Test question",
+            "questionText": "What year did World War One start?",
             "answer": [
               {
-                "answerText": "test answer",
+                "answerText": "1912",
                 "correct": false
               },
               {
-                "answerText": "test answer 2",
+                "answerText": "1913",
+                "correct": false
+              },
+              {
+                "answerText": "1914",
                 "correct": true
+              },
+              {
+                "answerText": "1918",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "How many wives did Henry VIII have?",
+            "answer": [
+              {
+                "answerText": "5",
+                "correct": false
+              },
+              {
+                "answerText": "6",
+                "correct": true
+              },
+              {
+                "answerText": "7",
+                "correct": false
+              },
+              {
+                "answerText": "8",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What colour was the Statue of Liberty orginally?",
+            "answer": [
+              {
+                "answerText": "White",
+                "correct": false
+              },
+              {
+                "answerText": "Yellow",
+                "correct": false
+              },
+              {
+                "answerText": "Green",
+                "correct": false
+              },
+              {
+                "answerText": "Copper",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Who was the first President of the United States of America?",
+            "answer": [
+              {
+                "answerText": "George W. Bush",
+                "correct": false
+              },
+              {
+                "answerText": "George Washington",
+                "correct": true
+              },
+              {
+                "answerText": "John F. Kennedy",
+                "correct": false
+              },
+              {
+                "answerText": "Ronald Raegan",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which famouse battle was fought in 1066?",
+            "answer": [
+              {
+                "answerText": "Agincourt",
+                "correct": false
+              },
+              {
+                "answerText": "Hastings",
+                "correct": true
+              },
+              {
+                "answerText": "Somme",
+                "correct": false
+              },
+              {
+                "answerText": "Waterloo",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Rome was founded in what year?",
+            "answer": [
+              {
+                "answerText": "753 BC",
+                "correct": true
+              },
+              {
+                "answerText": "1 BC",
+                "correct": false
+              },
+              {
+                "answerText": "2000 BC",
+                "correct": false
+              },
+              {
+                "answerText": "251 BC",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "The Statue of Liberty was a gift from which country?",
+            "answer": [
+              {
+                "answerText": "United Kingdom",
+                "correct": false
+              },
+              {
+                "answerText": "Netherlands",
+                "correct": false
+              },
+              {
+                "answerText": "Australia",
+                "correct": false
+              },
+              {
+                "answerText": "France",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionText": "Joseph Stalin became leader of the Soviet Union in what year?",
+            "answer": [
+              {
+                "answerText": "1924",
+                "correct": true
+              },
+              {
+                "answerText": "1939",
+                "correct": false
+              },
+              {
+                "answerText": "1901",
+                "correct": false
+              },
+              {
+                "answerText": "1945",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "What was the first colony established by England in North America?",
+            "answer": [
+              {
+                "answerText": "Prince Edward Island",
+                "correct": false
+              },
+              {
+                "answerText": "Jamestown",
+                "correct": true
+              },
+              {
+                "answerText": "New York",
+                "correct": false
+              },
+              {
+                "answerText": "Rupert's Land",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionText": "Which war started in 1939 and ended in 1945?",
+            "answer": [
+              {
+                "answerText": "World War One",
+                "correct": false
+              },
+              {
+                "answerText": "World War Two",
+                "correct": true
+              },
+              {
+                "answerText": "Vietnam War",
+                "correct": false
+              },
+              {
+                "answerText": "Zulu War",
+                "correct": false
               }
             ]
           }
