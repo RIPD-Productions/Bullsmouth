@@ -679,7 +679,7 @@
               },
               {
                 "answerText": "Deoxyribonucleic acid",
-                "correct": false
+                "correct": true
               },
               {
                 "answerText": "Decimal Number Adder",
@@ -687,7 +687,7 @@
               },
               {
                 "answerText": "Dynamic Nuclear Array",
-                "correct": true
+                "correct": false
               }
             ]
           },
@@ -1948,7 +1948,7 @@
               },
               {
                 "answerText": "Chamber of Secrets",
-                "correct": true
+                "correct": false
               },
               {
                 "answerText": "Deathly Hollows",
@@ -1956,7 +1956,7 @@
               },
               {
                 "answerText": "Philosophers Stone",
-                "correct": false
+                "correct": true
               }
             ]
           },

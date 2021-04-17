@@ -1,18 +1,12 @@
-const categoryJSON = loadJSON('./assets/json/questions.json')
-const videoJSON = loadJSON('./assets/json/video.json')
-
-let categorySelection = pickArray(0,3, 3)
-
-let questionSelection = ["0","1"]/* pickArray(0,9,5)*/
-
+let questionSelection = pickArray(0,9,5)
 let qIndex = 0
-
 let darts = 0
 
 bullsmouthVideo.loop = false;
 
 window.addEventListener('load', () => {
     sessionStorage.setItem('round', '0')
+    sessionStorage.setItem('category', null)
     window.dispatchEvent( new Event('storage') )
 }, {once: true})
 
@@ -45,7 +39,7 @@ window.addEventListener('storage', () => {
         qIndex++
     }
 
-    function categories(JSON){
+    function categories(JSON, categorySelection){
         JSON.onload = function () {
             const bullsmouthQuestions = JSON.response
             const categories = bullsmouthQuestions['bullsmouthQuestions']['category']
@@ -82,8 +76,6 @@ window.addEventListener('storage', () => {
 
             const answers = question.answer
 
-            console.log(answers)
-
             answers.forEach(answer => {
                 const answerDiv = document.createElement('div')
                 answerDiv.setAttribute('class', 'optionsChild')
@@ -112,7 +104,7 @@ window.addEventListener('storage', () => {
 
             correctIncorrect1(correctAnswer)
 
-            if (qIndex >= 3) {
+            if (qIndex >= 5) {
                 bullsmouthVideo.addEventListener('ended', () => {
                     interfaceVisibility('hidden')
                     setVisibility(categoryCard, 'hidden')
@@ -123,19 +115,24 @@ window.addEventListener('storage', () => {
                     console.log(darts)
 
                     bullsmouthVideo.addEventListener('ended', () => {
+                        interfaceVisibility('hidden')
+                        setVisibility(categoryCard, 'hidden')
+
                         sessionStorage.setItem('round', '1')
                         window.dispatchEvent(new Event('storage'))
                         interfaceOptions.removeEventListener('click', roundOne)
-                    }, {once: true, capture: true})
-                }, {once: true, capture: true})
+                    }, {once: true})
+                }, {once: true})
             } else {
                 bullsmouthVideo.addEventListener('ended', () => {
                     interfaceVisibility('visible')
                     setVisibility(categoryCard, 'hidden')
-                }, {once: true, capture: true})
+                }, {once: true})
             }
 
-            getQuestions(0, qIndex)
+            let sessionCat = sessionStorage.getItem('category')
+
+            getQuestions(sessionCat, questionSelection[qIndex])
         }
 
     }
@@ -152,7 +149,7 @@ window.addEventListener('storage', () => {
 
             correctIncorrect1(correctAnswer)
 
-            if (qIndex >= 3) {
+            if (qIndex >= 5) {
                 bullsmouthVideo.addEventListener('ended', () => {
                     interfaceVisibility('hidden')
                     setVisibility(categoryCard, 'hidden')
@@ -163,29 +160,34 @@ window.addEventListener('storage', () => {
                     console.log(darts)
 
                     bullsmouthVideo.addEventListener('ended', () => {
+                        setVisibility(categoryCard, 'hidden')
+
                         sessionStorage.setItem('round', '2')
                         window.dispatchEvent(new Event('storage'))
                         interfaceOptions.removeEventListener('click', roundTwo)
-                    }, {once: true, capture: true})
-                }, {once: true, capture: true})
+                    }, {once: true})
+                }, {once: true})
             } else {
                 bullsmouthVideo.addEventListener('ended', () => {
                     interfaceVisibility('visible')
                     setVisibility(categoryCard, 'hidden')
-                }, {once: true, capture: true})
+                }, {once: true})
             }
 
-            getQuestions(0, qIndex)
+            let sessionCat = sessionStorage.getItem('category')
+
+            getQuestions(sessionCat, questionSelection[qIndex])
         }
 
     }
 
     if (round === '0') {
-        const categoryJSON = loadJSON('./assets/json/questions.json')
-
-        setVisibility(userInterface, 'hidden')
+        interfaceVisibility('hidden')
         setVisibility(categoryCard, 'hidden')
-        setVisibility(interfaceOptions, 'hidden')
+
+        let categorySelection = pickArray(0,4, 3)
+
+        const categoryJSON = loadJSON('./assets/json/questions.json')
 
         bullsmouthVideo.src = './assets/vid/flowers.mp4'
         bullsmouthVideo.load()
@@ -196,7 +198,7 @@ window.addEventListener('storage', () => {
             setVisibility(categoryCard, 'visible')
         }, {once: true})
 
-        categories(categoryJSON)
+        categories(categoryJSON, categorySelection)
 
         categoryList.addEventListener('click', (event) => {
 
@@ -209,7 +211,10 @@ window.addEventListener('storage', () => {
 
                 let catIndex = event.target.dataset.index
 
-                getQuestions(0, 0)
+                sessionStorage.setItem('category', catIndex)
+                let sessionCat = sessionStorage.getItem('category')
+
+                getQuestions(sessionCat, questionSelection[qIndex])
 
                 while (interfaceOptions.firstChild) {
                     interfaceOptions.removeChild(interfaceOptions.firstChild);
@@ -221,16 +226,8 @@ window.addEventListener('storage', () => {
     } else if (round === '1') {
         qIndex = 0
 
-        setVisibility(userInterface, 'hidden')
+        interfaceVisibility('hidden')
         setVisibility(categoryCard, 'hidden')
-        setVisibility(interfaceOptions, 'hidden')
-        setVisibility(questionCard, 'hidden')
-
-        while (categoryList.firstChild) {
-            categoryList.removeChild(categoryList.firstChild);
-        }
-
-        const categoryJSON = loadJSON('./assets/json/questions.json')
 
         bullsmouthVideo.src = './assets/vid/roundTwoStart.mp4'
         bullsmouthVideo.load()
@@ -241,7 +238,15 @@ window.addEventListener('storage', () => {
             setVisibility(categoryCard, 'visible')
         }, {once: true})
 
-        categories(categoryJSON)
+        while (categoryList.firstChild) {
+            categoryList.removeChild(categoryList.firstChild);
+        }
+
+        let categorySelection = pickArray(5,9, 3)
+
+        const categoryJSON = loadJSON('./assets/json/questions.json')
+
+        categories(categoryJSON, categorySelection)
 
         categoryList.addEventListener('click', (event) => {
             if (event.target.classList.contains('categoryOption')) {
@@ -253,7 +258,10 @@ window.addEventListener('storage', () => {
 
                 let catIndex = event.target.dataset.index
 
-                getQuestions(0, 0)
+                sessionStorage.setItem('category', catIndex)
+                let sessionCat = sessionStorage.getItem('category')
+
+                getQuestions(sessionCat, questionSelection[qIndex])
 
                 while (interfaceOptions.firstChild) {
                     interfaceOptions.removeChild(interfaceOptions.firstChild);
@@ -266,7 +274,9 @@ window.addEventListener('storage', () => {
 
     } else if (round === '2') {
 
-    }
+        bullsmouthVideo.src = './assets/vid/roundThreeStart.mp4'
+        bullsmouthVideo.load()
+        bullsmouthVideo.play()
 
-    console.log(sessionStorage.getItem('round'))
+    }
 })

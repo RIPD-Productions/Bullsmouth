@@ -33,20 +33,20 @@ function setVisibility(uiElement, visibility){
     return uiElement.style.visibility = visibility
 }
 
-function pickArray( min, max, total) {
+function pickArray(min, max, totalPicks) {
     let numbers = [];
-    for (let i = 0; i < total; i++) {
-        let number =  Math.floor(Math.random() * max) + min;
-        let check = numbers.includes(number);
+    for (let i = 0; i < totalPicks; i++) {
+        let number =  Math.floor(Math.random() * (max - min + 1)) + min
+        let check = numbers.includes(number)
 
         if(check === false) {
-            numbers.push(number);
+            numbers.push(number)
         } else {
             while(check === true){
-                number = Math.floor(Math.random() * max) + min;
-                check = numbers.includes(number);
+                number = Math.floor(Math.random() * (max - min + 1)) + min
+                check = numbers.includes(number)
                 if(check === false){
-                    numbers.push(number);
+                    numbers.push(number)
                 }
             }
         }
