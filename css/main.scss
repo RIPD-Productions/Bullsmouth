@@ -174,6 +174,28 @@ video {
   }
 }
 
+#pageNav{
+  position: fixed;
+  font-size: calculateRem(24px);
+
+  ul{
+    ::marker {
+      content: "\25C0";
+      color: #000;
+      font-size: calculateRem(28px);
+    }
+  }
+
+  li{
+    padding-left: 10px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #000;
+  }
+
+}
 
 .nav{
   text-decoration: none;
@@ -314,7 +336,7 @@ video {
   display: flex;
   height: calc((100vh - 40vh) - 15rem);
   padding: 5rem;
-  font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
+  font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 4rem);
   z-index: 2;
   justify-content: center;
   align-items: center;
@@ -370,6 +392,28 @@ video {
   }
 }
 
+.dartOption{
+  display: flex;
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+  padding: 1rem;
+  border: 1rem solid rgba(255,255,255,.0);
+  transition: 250ms linear;
+  text-decoration: none;
+  color: #FFFF00FF;
+  text-shadow: 1px 1px 0 #000;
+  -webkit-text-stroke: 1px #000;
+  font-size: calculateRem(30px);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &:focus,&:hover{
+    outline: none;
+    border: 1rem solid #FFF;
+  }
+}
+
 #portraitNotification{
   display: none;
 }
@@ -414,4 +458,19 @@ video {
     }
   }
 
+}
+
+#dartCounter{
+  position: fixed;
+  z-index: 4;
+  height: 90px;
+  width: 90px;
+  padding: 10px;
+  background-image: url(../assets/img/svg/dartboard.svg);
+  background-size: contain;
+  font-size: 4.5rem;
+  color: #FFFF00FF;
+  text-shadow: 3px 3px 0 #000;
+  -webkit-text-stroke: 3px #000;
+  text-align: center;
 }

@@ -1,6 +1,10 @@
+const dartCounter = document.getElementById('dartCounter')
+
 let questionSelection = pickArray(0,9,5)
 let qIndex = 0
 let darts = 0
+
+dartCounter.innerText = darts.toString()
 
 bullsmouthVideo.loop = false;
 
@@ -23,13 +27,37 @@ window.addEventListener('storage', () => {
         if (correctAnswer !== 'false') {
             interfaceVisibility('hidden')
             darts++
-            bullsmouthVideo.src = './assets/vid/correct.mp4'
+
+            dartCounter.innerText = darts.toString()
+
+            let outcome = pickArray(0,3,1)
+
+            let videos = [
+                './assets/vid/correct/correct1.mp4',
+                './assets/vid/correct/correct2.mp4',
+                './assets/vid/correct/correct3.mp4',
+                './assets/vid/correct/correct4.mp4'
+            ]
+
+            bullsmouthVideo.src = videos[outcome[0]]
+
             bullsmouthVideo.load()
             console.log('correct')
 
         } else {
             interfaceVisibility('hidden')
-            bullsmouthVideo.src = './assets/vid/incorrect.mp4'
+
+            let outcome = pickArray(0,3,1)
+
+            let videos = [
+                './assets/vid/incorrect/incorrect1.mp4',
+                './assets/vid/incorrect/incorrect2.mp4',
+                './assets/vid/incorrect/incorrect3.mp4',
+                './assets/vid/incorrect/incorrect4.mp4'
+            ]
+
+            bullsmouthVideo.src = videos[outcome[0]]
+
             bullsmouthVideo.load()
             console.log('incorrect')
         }
@@ -125,8 +153,25 @@ window.addEventListener('storage', () => {
                 }, {once: true})
             } else {
                 bullsmouthVideo.addEventListener('ended', () => {
-                    interfaceVisibility('visible')
-                    setVisibility(categoryCard, 'hidden')
+                    let outcome = pickArray(0,4,1)
+
+                    let videos = [
+                        './assets/vid/nextQuestion/nextQuestion1.mp4',
+                        './assets/vid/nextQuestion/nextQuestion2.mp4',
+                        './assets/vid/nextQuestion/nextQuestion3.mp4',
+                        './assets/vid/nextQuestion/nextQuestion4.mp4',
+                        './assets/vid/nextQuestion/nextQuestion5.mp4',
+                    ]
+
+                    bullsmouthVideo.src = videos[outcome[0]]
+                    bullsmouthVideo.load()
+                    bullsmouthVideo.play()
+
+                    bullsmouthVideo.addEventListener("ended", ()=> {
+                        interfaceVisibility('visible')
+                        setVisibility(categoryCard, 'hidden')
+                    }, {once: true})
+
                 }, {once: true})
             }
 
@@ -169,14 +214,100 @@ window.addEventListener('storage', () => {
                 }, {once: true})
             } else {
                 bullsmouthVideo.addEventListener('ended', () => {
-                    interfaceVisibility('visible')
-                    setVisibility(categoryCard, 'hidden')
+                    let outcome = pickArray(0,4,1)
+
+                    let videos = [
+                        './assets/vid/nextQuestion/nextQuestion1.mp4',
+                        './assets/vid/nextQuestion/nextQuestion2.mp4',
+                        './assets/vid/nextQuestion/nextQuestion3.mp4',
+                        './assets/vid/nextQuestion/nextQuestion4.mp4',
+                        './assets/vid/nextQuestion/nextQuestion5.mp4',
+                    ]
+
+                    bullsmouthVideo.src = videos[outcome[0]]
+                    bullsmouthVideo.load()
+                    bullsmouthVideo.play()
+
+                    bullsmouthVideo.addEventListener("ended", ()=> {
+                        interfaceVisibility('visible')
+                        setVisibility(categoryCard, 'hidden')
+                    }, {once: true})
+
                 }, {once: true})
             }
 
             let sessionCat = sessionStorage.getItem('category')
 
             getQuestions(sessionCat, questionSelection[qIndex])
+        }
+
+    }
+
+    function roundThree(event){
+        if (event.target.classList.contains('dartOption')) {
+            event.preventDefault()
+
+            let dartOption = event.target.dataset.dartoption
+
+            if (dartOption === "TopLeft") {
+
+                let outcome = pickArray(0,1,1)
+
+                let videos = [
+                    './assets/vid/flowers.mp4',
+                    './assets/vid/flowers.mp4'
+                ]
+
+                bullsmouthVideo.src = videos[outcome[0]]
+            } else if (dartOption === "TopRight") {
+
+                let outcome = pickArray(0,1,1)
+
+                let videos = [
+                    './assets/vid/flowers.mp4',
+                    './assets/vid/flowers.mp4'
+                ]
+
+                bullsmouthVideo.src = videos[outcome[0]]
+            } else if (dartOption === "BottomLeft") {
+
+                let outcome = pickArray(0,1,1)
+
+                let videos = [
+                    './assets/vid/flowers.mp4',
+                    './assets/vid/flowers.mp4'
+                ]
+
+                bullsmouthVideo.src = videos[outcome[0]]
+            } else if (dartOption === "BottomRight") {
+
+                let outcome = pickArray(0,1,1)
+
+                let videos = [
+                    './assets/vid/flowers.mp4',
+                    './assets/vid/flowers.mp4'
+                ]
+
+                bullsmouthVideo.src = videos[outcome[0]]
+            }
+
+            darts--
+
+            if(darts <= 0){
+
+                bullsmouthVideo.src = './assets/vid/conclusion.mp4'
+
+                bullsmouthVideo.addEventListener('ended', () => {
+                    window.location.href = './score.html'
+                }, {once: true})
+
+            }
+
+            dartCounter.innerText = darts.toString();
+
+            bullsmouthVideo.load()
+            bullsmouthVideo.play()
+
         }
 
     }
@@ -274,9 +405,37 @@ window.addEventListener('storage', () => {
 
     } else if (round === '2') {
 
+        setVisibility(categoryCard, 'hidden')
+        setVisibility(userInterface, 'hidden')
+        setVisibility(interfaceOptions, 'hidden')
+
         bullsmouthVideo.src = './assets/vid/roundThreeStart.mp4'
         bullsmouthVideo.load()
         bullsmouthVideo.play()
 
+        bullsmouthVideo.addEventListener('ended', () => {
+            setVisibility(interfaceOptions, 'visible')
+        }, {once: true})
+
+        const options = [
+            "Top Left", "Top Right", "Bottom Left", "Bottom Right"
+        ]
+
+        options.forEach(option => {
+            const answerDiv = document.createElement('div')
+            answerDiv.setAttribute('class', 'optionsChild')
+
+            const answerOption = document.createElement('a')
+            answerOption.innerText = option
+            answerOption.setAttribute('class', 'dartOption')
+            answerOption.setAttribute('href', '#')
+            answerOption.setAttribute('data-dartOption', option.split(" ").join("")
+            )
+
+            interfaceOptions.appendChild(answerDiv)
+            answerDiv.appendChild(answerOption)
+        })
+
+        interfaceOptions.addEventListener('click', roundThree)
     }
 })

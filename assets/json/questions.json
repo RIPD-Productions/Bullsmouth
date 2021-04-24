@@ -826,7 +826,7 @@
               },
               {
                 "answerText": "A Vacuum",
-                "correct": false
+                "correct": true
               },
               {
                 "answerText": "Solid Wall",
