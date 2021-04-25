@@ -576,7 +576,7 @@
                 "correct": false
               },
               {
-                "answerText": "Sanbox",
+                "answerText": "Sandbox",
                 "correct": false
               }
             ]
@@ -1719,7 +1719,7 @@
                 "correct": true
               },
               {
-                "answerText": "White",
+                "answerText": "Purple",
                 "correct": false
               }
             ]
@@ -1961,7 +1961,7 @@
             ]
           },
           {
-            "questionText": "Which of these characters if rom Alice in Wonderland?",
+            "questionText": "Which of these characters is from Alice in Wonderland?",
             "answer": [
               {
                 "answerText": "Cheshire Cat",
