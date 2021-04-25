@@ -4,6 +4,7 @@ let questionSelection = pickArray(0,9,5)
 let qIndex = 0
 let darts = 0
 
+setVisibility(dartCounter,'hidden')
 dartCounter.innerText = darts.toString()
 
 bullsmouthVideo.loop = false;
@@ -25,6 +26,7 @@ window.addEventListener('storage', () => {
 
     function correctIncorrect1(correctAnswer){
         if (correctAnswer !== 'false') {
+            setVisibility(dartCounter,'visible')
             interfaceVisibility('hidden')
             darts++
 
@@ -45,6 +47,7 @@ window.addEventListener('storage', () => {
             console.log('correct')
 
         } else {
+            setVisibility(dartCounter,'visible')
             interfaceVisibility('hidden')
 
             let outcome = pickArray(0,3,1)
@@ -253,54 +256,94 @@ window.addEventListener('storage', () => {
 
                 let outcome = pickArray(0,1,1)
 
+                let prize4 = localStorage.getItem('prize4')
+
+                if(outcome === 0 && prize4 === '1'){
+                    outcome = pickArray(0,1,1)
+                }
+
                 let videos = [
                     './assets/vid/flowers.mp4',
                     './assets/vid/flowers.mp4'
                 ]
+
+                if(videos[outcome[0]] === './assets/vid/prize4.mp4'){
+                    localStorage.setItem('prize4', '1')
+                }
 
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "TopRight") {
 
                 let outcome = pickArray(0,1,1)
 
+                let prize3 = localStorage.getItem('prize3')
+
+                if(outcome === 0 && prize3 === '1'){
+                    outcome = pickArray(0,1,1)
+                }
+
                 let videos = [
                     './assets/vid/flowers.mp4',
                     './assets/vid/flowers.mp4'
                 ]
+
+                if(videos[outcome[0]] === './assets/vid/prize3.mp4'){
+                    localStorage.setItem('prize3', '1')
+                }
 
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomLeft") {
 
                 let outcome = pickArray(0,1,1)
 
+                let prize2 = localStorage.getItem('prize2')
+
+                if(outcome === 0 && prize2 === '1'){
+                    outcome = pickArray(0,1,1)
+                }
+
                 let videos = [
-                    './assets/vid/flowers.mp4',
+                    './assets/vid/prize2.mp4',
                     './assets/vid/flowers.mp4'
                 ]
+
+                if(videos[outcome[0]] === './assets/vid/prize2.mp4'){
+                    localStorage.setItem('prize2', '1')
+                }
 
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomRight") {
 
                 let outcome = pickArray(0,1,1)
 
+                let prize1 = localStorage.getItem('prize1')
+
+                if(outcome === 0 && prize1 === '1'){
+                    outcome = pickArray(0,1,1)
+                }
+
                 let videos = [
-                    './assets/vid/flowers.mp4',
+                    './assets/vid/prize1.mp4',
                     './assets/vid/flowers.mp4'
                 ]
 
                 bullsmouthVideo.src = videos[outcome[0]]
+
+                if(videos[outcome[0]] === './assets/vid/prize1.mp4'){
+                    localStorage.setItem('prize1', '1')
+                }
             }
 
             darts--
 
             if(darts <= 0){
+                setVisibility(dartCounter,'hidden')
 
                 bullsmouthVideo.src = './assets/vid/conclusion.mp4'
 
                 bullsmouthVideo.addEventListener('ended', () => {
                     window.location.href = './score.html'
                 }, {once: true})
-
             }
 
             dartCounter.innerText = darts.toString();
@@ -320,7 +363,8 @@ window.addEventListener('storage', () => {
 
         const categoryJSON = loadJSON('./assets/json/questions.json')
 
-        bullsmouthVideo.src = './assets/vid/flowers.mp4'
+        bullsmouthVideo.src = './assets/vid/introduction.mp4'
+
         bullsmouthVideo.load()
         bullsmouthVideo.play()
 
@@ -404,6 +448,8 @@ window.addEventListener('storage', () => {
         }, {once: true})
 
     } else if (round === '2') {
+
+        localStorage.setItem('totalDarts', darts.toString())
 
         setVisibility(categoryCard, 'hidden')
         setVisibility(userInterface, 'hidden')
