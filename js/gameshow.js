@@ -10,7 +10,7 @@ dartCounter.innerText = darts.toString()
 bullsmouthVideo.loop = false;
 
 window.addEventListener('load', () => {
-    sessionStorage.setItem('round', '0')
+    sessionStorage.setItem('round', '2')
     sessionStorage.setItem('category', null)
     window.dispatchEvent( new Event('storage') )
 }, {once: true})
@@ -254,17 +254,19 @@ window.addEventListener('storage', () => {
 
             if (dartOption === "TopLeft") {
 
-                let outcome = pickArray(0,1,1)
+                let outcome = pickArray(0,3,1)
 
                 let prize4 = localStorage.getItem('prize4')
 
-                if(outcome === 0 && prize4 === '1'){
-                    outcome = pickArray(0,1,1)
+                if(prize4 !== null){
+                    outcome = pickArray(1,3,1)
                 }
 
                 let videos = [
-                    './assets/vid/flowers.mp4',
-                    './assets/vid/flowers.mp4'
+                    './assets/vid/prizes/prize4.mp4',
+                    './assets/vid/miss/miss1.mp4',
+                    './assets/vid/miss/miss2.mp4',
+                    './assets/vid/miss/miss3.mp4'
                 ]
 
                 if(videos[outcome[0]] === './assets/vid/prize4.mp4'){
@@ -274,17 +276,19 @@ window.addEventListener('storage', () => {
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "TopRight") {
 
-                let outcome = pickArray(0,1,1)
+                let outcome = pickArray(0,3,1)
 
                 let prize3 = localStorage.getItem('prize3')
 
-                if(outcome === 0 && prize3 === '1'){
-                    outcome = pickArray(0,1,1)
+                if(prize3 !== null){
+                    outcome = pickArray(1,3,1)
                 }
 
                 let videos = [
-                    './assets/vid/flowers.mp4',
-                    './assets/vid/flowers.mp4'
+                    './assets/vid/prizes/prize3.mp4',
+                    './assets/vid/miss/miss1.mp4',
+                    './assets/vid/miss/miss2.mp4',
+                    './assets/vid/miss/miss3.mp4'
                 ]
 
                 if(videos[outcome[0]] === './assets/vid/prize3.mp4'){
@@ -294,17 +298,19 @@ window.addEventListener('storage', () => {
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomLeft") {
 
-                let outcome = pickArray(0,1,1)
+                let outcome = pickArray(0,3,1)
 
                 let prize2 = localStorage.getItem('prize2')
 
-                if(outcome === 0 && prize2 === '1'){
-                    outcome = pickArray(0,1,1)
+                if(prize2 !== null){
+                    outcome = pickArray(1,3,1)
                 }
 
                 let videos = [
-                    './assets/vid/prize2.mp4',
-                    './assets/vid/flowers.mp4'
+                    './assets/vid/prizes/prize2.mp4',
+                    './assets/vid/miss/miss1.mp4',
+                    './assets/vid/miss/miss2.mp4',
+                    './assets/vid/miss/miss3.mp4'
                 ]
 
                 if(videos[outcome[0]] === './assets/vid/prize2.mp4'){
@@ -314,17 +320,19 @@ window.addEventListener('storage', () => {
                 bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomRight") {
 
-                let outcome = pickArray(0,1,1)
+                let outcome = pickArray(0,3,1)
 
                 let prize1 = localStorage.getItem('prize1')
 
-                if(outcome === 0 && prize1 === '1'){
-                    outcome = pickArray(0,1,1)
+                if(prize1 !== null){
+                    outcome = pickArray(1,3,1)
                 }
 
                 let videos = [
-                    './assets/vid/prize1.mp4',
-                    './assets/vid/flowers.mp4'
+                    './assets/vid/prizes/prize1.mp4',
+                    './assets/vid/miss/miss1.mp4',
+                    './assets/vid/miss/miss2.mp4',
+                    './assets/vid/miss/miss3.mp4'
                 ]
 
                 bullsmouthVideo.src = videos[outcome[0]]
@@ -336,23 +344,41 @@ window.addEventListener('storage', () => {
 
             darts--
 
-            if(darts <= 0){
+            if(darts === 0){
                 setVisibility(dartCounter,'hidden')
 
                 bullsmouthVideo.src = './assets/vid/conclusion.mp4'
+                bullsmouthVideo.load()
+                bullsmouthVideo.play()
 
                 bullsmouthVideo.addEventListener('ended', () => {
                     window.location.href = './score.html'
                 }, {once: true})
+            } else {
+
+                dartCounter.innerText = darts.toString();
+
+                bullsmouthVideo.load()
+                bullsmouthVideo.play()
+
+                setVisibility(interfaceOptions, 'hidden')
+
+                bullsmouthVideo.addEventListener('ended', () => {
+                    if(bullsmouthVideo.currentSrc !== './assets/vid/prizes/prize1.mp4' || './assets/vid/prizes/prize2.mp4' || './assets/vid/prizes/prize3.mp4' || './assets/vid/prizes/prize4.mp4'){
+                        bullsmouthVideo.src = './assets/vid/nextThrow.mp4'
+
+                        bullsmouthVideo.load()
+                        bullsmouthVideo.play()
+
+                        bullsmouthVideo.addEventListener('ended', () => {
+                            setVisibility(interfaceOptions, 'visible')
+                        })
+
+                    }
+                }, {once: true})
+
             }
-
-            dartCounter.innerText = darts.toString();
-
-            bullsmouthVideo.load()
-            bullsmouthVideo.play()
-
         }
-
     }
 
     if (round === '0') {

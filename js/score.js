@@ -36,10 +36,10 @@ scoreForm.addEventListener('submit', (event) => {
 
 scoreForm.addEventListener('formdata', (data) => {
     let score = data.formData
-
-    console.log(score)
-
     const request = new XMLHttpRequest()
     request.open("POST", "./src/setHighScores.php")
     request.send(score)
+    localStorage.clear()
+    sessionStorage.clear();
+    window.location.href = './highscores.html'
 })
