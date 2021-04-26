@@ -2,7 +2,7 @@ const dartCounter = document.getElementById('dartCounter')
 
 let questionSelection = pickArray(0,9,5)
 let qIndex = 0
-let darts = 0
+let darts = 1
 
 setVisibility(dartCounter,'hidden')
 dartCounter.innerText = darts.toString()
@@ -254,105 +254,134 @@ window.addEventListener('storage', () => {
 
             if (dartOption === "TopLeft") {
 
-                let outcome = pickArray(0,3,1)
-
                 let prize4 = localStorage.getItem('prize4')
 
-                if(prize4 !== null){
-                    outcome = pickArray(1,3,1)
-                }
-
-                let videos = [
-                    './assets/vid/prizes/prize4.mp4',
-                    './assets/vid/miss/miss1.mp4',
-                    './assets/vid/miss/miss2.mp4',
-                    './assets/vid/miss/miss3.mp4'
-                ]
-
-                if(videos[outcome[0]] === './assets/vid/prize4.mp4'){
+                if(darts === 1 && prize4 == null){
                     localStorage.setItem('prize4', '1')
+                    bullsmouthVideo.src = './assets/vid/prizes/prize4.mp4'
+                } else {
+                    let outcome = pickArray(0,3,1)
+
+                    if(prize4 !== null){
+                        outcome = pickArray(1,3,1)
+                    }
+
+                    let videos = [
+                        './assets/vid/prizes/prize4.mp4',
+                        './assets/vid/miss/miss1.mp4',
+                        './assets/vid/miss/miss2.mp4',
+                        './assets/vid/miss/miss3.mp4'
+                    ]
+
+                    if(videos[outcome[0]] === './assets/vid/prize4.mp4'){
+                        localStorage.setItem('prize4', '1')
+                    }
+
+                    bullsmouthVideo.src = videos[outcome[0]]
                 }
 
-                bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "TopRight") {
-
-                let outcome = pickArray(0,3,1)
 
                 let prize3 = localStorage.getItem('prize3')
 
-                if(prize3 !== null){
-                    outcome = pickArray(1,3,1)
-                }
-
-                let videos = [
-                    './assets/vid/prizes/prize3.mp4',
-                    './assets/vid/miss/miss1.mp4',
-                    './assets/vid/miss/miss2.mp4',
-                    './assets/vid/miss/miss3.mp4'
-                ]
-
-                if(videos[outcome[0]] === './assets/vid/prize3.mp4'){
+                if(darts === 1 && prize3 == null){
                     localStorage.setItem('prize3', '1')
+                    bullsmouthVideo.src = './assets/vid/prizes/prize3.mp4'
+                } else {
+                    let outcome = pickArray(0,3,1)
+
+                    if(prize3 !== null){
+                        outcome = pickArray(1,3,1)
+                    }
+
+                    let videos = [
+                        './assets/vid/prizes/prize3.mp4',
+                        './assets/vid/miss/miss1.mp4',
+                        './assets/vid/miss/miss2.mp4',
+                        './assets/vid/miss/miss3.mp4'
+                    ]
+
+                    if(videos[outcome[0]] === './assets/vid/prize3.mp4'){
+                        localStorage.setItem('prize3', '1')
+                    }
+
+                    bullsmouthVideo.src = videos[outcome[0]]
                 }
-
-                bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomLeft") {
-
-                let outcome = pickArray(0,3,1)
 
                 let prize2 = localStorage.getItem('prize2')
 
-                if(prize2 !== null){
-                    outcome = pickArray(1,3,1)
-                }
-
-                let videos = [
-                    './assets/vid/prizes/prize2.mp4',
-                    './assets/vid/miss/miss1.mp4',
-                    './assets/vid/miss/miss2.mp4',
-                    './assets/vid/miss/miss3.mp4'
-                ]
-
-                if(videos[outcome[0]] === './assets/vid/prize2.mp4'){
+                if(darts === 1 && prize2 == null){
                     localStorage.setItem('prize2', '1')
+                    bullsmouthVideo.src = './assets/vid/prizes/prize2.mp4'
+                } else {
+                    let outcome = pickArray(0,3,1)
+
+                    if(prize2 !== null){
+                        outcome = pickArray(1,3,1)
+                    }
+
+                    let videos = [
+                        './assets/vid/prizes/prize2.mp4',
+                        './assets/vid/miss/miss1.mp4',
+                        './assets/vid/miss/miss2.mp4',
+                        './assets/vid/miss/miss3.mp4'
+                    ]
+
+                    if(videos[outcome[0]] === './assets/vid/prize2.mp4'){
+                        localStorage.setItem('prize2', '1')
+                    }
+
+                    bullsmouthVideo.src = videos[outcome[0]]
                 }
-
-                bullsmouthVideo.src = videos[outcome[0]]
             } else if (dartOption === "BottomRight") {
-
-                let outcome = pickArray(0,3,1)
 
                 let prize1 = localStorage.getItem('prize1')
 
-                if(prize1 !== null){
-                    outcome = pickArray(1,3,1)
-                }
-
-                let videos = [
-                    './assets/vid/prizes/prize1.mp4',
-                    './assets/vid/miss/miss1.mp4',
-                    './assets/vid/miss/miss2.mp4',
-                    './assets/vid/miss/miss3.mp4'
-                ]
-
-                bullsmouthVideo.src = videos[outcome[0]]
-
-                if(videos[outcome[0]] === './assets/vid/prize1.mp4'){
+                if(darts === 1 && prize1 == null){
                     localStorage.setItem('prize1', '1')
+                    bullsmouthVideo.src = './assets/vid/prizes/prize1.mp4'
+                } else {
+                    let outcome = pickArray(0,3,1)
+
+                    if(prize1 !== null){
+                        outcome = pickArray(1,3,1)
+                    }
+
+                    let videos = [
+                        './assets/vid/prizes/prize1.mp4',
+                        './assets/vid/miss/miss1.mp4',
+                        './assets/vid/miss/miss2.mp4',
+                        './assets/vid/miss/miss3.mp4'
+                    ]
+
+                    bullsmouthVideo.src = videos[outcome[0]]
+
+                    if(videos[outcome[0]] === './assets/vid/prize1.mp4'){
+                        localStorage.setItem('prize1', '1')
+                    }
                 }
             }
 
             darts--
 
-            if(darts === 0){
+            if(darts <= 0){
                 setVisibility(dartCounter,'hidden')
 
-                bullsmouthVideo.src = './assets/vid/conclusion.mp4'
                 bullsmouthVideo.load()
                 bullsmouthVideo.play()
 
+                setVisibility(interfaceOptions, 'hidden')
+
                 bullsmouthVideo.addEventListener('ended', () => {
-                    window.location.href = './score.html'
+                    bullsmouthVideo.src = './assets/vid/conclusion.mp4'
+                    bullsmouthVideo.load()
+                    bullsmouthVideo.play()
+
+                    bullsmouthVideo.addEventListener('ended', () => {
+                        window.location.href = './score.html'
+                    }, {once: true})
+
                 }, {once: true})
             } else {
 
