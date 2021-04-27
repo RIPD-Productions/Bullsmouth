@@ -320,14 +320,9 @@ video {
     flex-direction: column;
     color: #FFF;
     font-size: clamp(1rem, calc(-0.2222rem + 5.4321vw), 5rem);
-    z-index: 10; }
-    #portraitNotification a {
-      display: inline-block;
-      color: #000;
-      margin: 2.5rem;
-      background-color: #FFF;
-      text-align: center;
-      text-decoration: none; } }
+    z-index: 10;
+    padding: 1rem;
+    text-align: center; } }
 #dartCounter {
   position: fixed;
   z-index: 4;
@@ -341,5 +336,40 @@ video {
   text-shadow: 3px 3px 0 #000;
   -webkit-text-stroke: 3px #000;
   text-align: center; }
+
+@media only screen and (max-height: 500px) {
+  #interface {
+    padding: 1rem;
+    width: calc(100% - 4rem);
+    height: calc(100vh - 4rem);
+    border: 1rem solid #F8EEF6; }
+
+  #categoryCard {
+    height: calc(100vh - 2rem);
+    width: calc(100% - 2rem);
+    padding: 1rem; }
+    #categoryCard::before {
+      bottom: 1rem;
+      left: 1rem; }
+
+  #questionCard {
+    padding: 1rem;
+    font-size: 1rem;
+    height: calc((100vh - 40vh) - 10rem); }
+
+  #interfaceOptions::before {
+    bottom: 1rem;
+    left: 1rem; }
+
+  .answer {
+    font-size: 1rem; }
+
+  #dartCounter {
+    height: 45px;
+    width: 45px;
+    padding: 5px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 0 #000;
+    -webkit-text-stroke: 1px #000; } }
 
 /*# sourceMappingURL=main.css.map */

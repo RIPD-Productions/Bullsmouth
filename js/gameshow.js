@@ -256,7 +256,7 @@ window.addEventListener('storage', () => {
 
                 let prize4 = localStorage.getItem('prize4')
 
-                if(darts === 1 && prize4 == null){
+                if(darts === 1 && prize4 === null){
                     localStorage.setItem('prize4', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize4.mp4'
                 } else {
@@ -284,7 +284,7 @@ window.addEventListener('storage', () => {
 
                 let prize3 = localStorage.getItem('prize3')
 
-                if(darts === 1 && prize3 == null){
+                if(darts === 1 && prize3 === null){
                     localStorage.setItem('prize3', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize3.mp4'
                 } else {
@@ -311,7 +311,7 @@ window.addEventListener('storage', () => {
 
                 let prize2 = localStorage.getItem('prize2')
 
-                if(darts === 1 && prize2 == null){
+                if(darts === 1 && prize2 === null){
                     localStorage.setItem('prize2', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize2.mp4'
                 } else {
@@ -338,7 +338,7 @@ window.addEventListener('storage', () => {
 
                 let prize1 = localStorage.getItem('prize1')
 
-                if(darts === 1 && prize1 == null){
+                if(darts === 1 && prize1 === null){
                     localStorage.setItem('prize1', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize1.mp4'
                 } else {

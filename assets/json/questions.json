@@ -192,6 +192,27 @@
                 "correct": true
               }
             ]
+          },
+          {
+            "questionText": "Who directed Lawrence of Arabia?",
+            "answer": [
+              {
+                "answerText": "Stanley Kubrick",
+                "correct": false
+              },
+              {
+                "answerText": "Steven Spielberg",
+                "correct": false
+              },
+              {
+                "answerText": "David Lean",
+                "correct": true
+              },
+              {
+                "answerText": "Richard Attenborough",
+                "correct": false
+              }
+            ]
           }
         ]
       },
@@ -787,11 +808,11 @@
                 "correct": false
               },
               {
-                "answerText": "279,700",
+                "answerText": "279,700 km",
                 "correct": false
               },
               {
-                "answerText": "403,300",
+                "answerText": "403,300 km",
                 "correct": false
               }
             ]
