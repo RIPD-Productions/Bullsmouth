@@ -2,7 +2,7 @@ const dartCounter = document.getElementById('dartCounter')
 
 let questionSelection = pickArray(0,9,5)
 let qIndex = 0
-let darts = 1
+let darts = 0
 
 setVisibility(dartCounter,'hidden')
 dartCounter.innerText = darts.toString()
@@ -10,7 +10,7 @@ dartCounter.innerText = darts.toString()
 bullsmouthVideo.loop = false;
 
 window.addEventListener('load', () => {
-    sessionStorage.setItem('round', '2')
+    sessionStorage.setItem('round', '0')
     sessionStorage.setItem('category', null)
     window.dispatchEvent( new Event('storage') )
 }, {once: true})
