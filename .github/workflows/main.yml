@@ -12,7 +12,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: bullsmsouth.scottcottam.co.uk
-        username: myFtpUserName
+        username: dh_v5ed3w
         password: ${{ secrets.ftp_password }}
         exclude: .git*
         dry-run: true
