@@ -302,7 +302,7 @@ window.addEventListener('storage', () => {
                     ]
 
                     if(videos[outcome[0]].match(/prize3/g)){
-                        localStorage.setItem('prize4', '1')
+                        localStorage.setItem('prize3', '1')
                     }
 
                     bullsmouthVideo.src = videos[outcome[0]]
@@ -329,7 +329,7 @@ window.addEventListener('storage', () => {
                     ]
 
                     if(videos[outcome[0]].match(/prize2/g)){
-                        localStorage.setItem('prize4', '1')
+                        localStorage.setItem('prize2', '1')
                     }
 
                     bullsmouthVideo.src = videos[outcome[0]]
@@ -356,7 +356,7 @@ window.addEventListener('storage', () => {
                     ]
 
                     if(videos[outcome[0]].match(/prize1/g)){
-                        localStorage.setItem('prize4', '1')
+                        localStorage.setItem('prize1', '1')
                     }
 
                     bullsmouthVideo.src = videos[outcome[0]]
