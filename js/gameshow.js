@@ -257,8 +257,8 @@ window.addEventListener('storage', () => {
                 let prize4 = localStorage.getItem('prize4')
 
                 if(darts === 1 && prize4 === null){
-                    localStorage.setItem('prize4', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize4.mp4'
+                    localStorage.setItem('prize4', '1')
                 } else {
                     let outcome = pickArray(0,3,1)
 
@@ -273,7 +273,7 @@ window.addEventListener('storage', () => {
                         './assets/vid/miss/miss3.mp4'
                     ]
 
-                    if(videos[outcome[0]] === './assets/vid/prize4.mp4'){
+                    if(videos[outcome[0]].match(/prize4/g)){
                         localStorage.setItem('prize4', '1')
                     }
 
@@ -285,8 +285,8 @@ window.addEventListener('storage', () => {
                 let prize3 = localStorage.getItem('prize3')
 
                 if(darts === 1 && prize3 === null){
-                    localStorage.setItem('prize3', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize3.mp4'
+                    localStorage.setItem('prize3', '1')
                 } else {
                     let outcome = pickArray(0,3,1)
 
@@ -301,8 +301,8 @@ window.addEventListener('storage', () => {
                         './assets/vid/miss/miss3.mp4'
                     ]
 
-                    if(videos[outcome[0]] === './assets/vid/prize3.mp4'){
-                        localStorage.setItem('prize3', '1')
+                    if(videos[outcome[0]].match(/prize3/g)){
+                        localStorage.setItem('prize4', '1')
                     }
 
                     bullsmouthVideo.src = videos[outcome[0]]
@@ -312,8 +312,8 @@ window.addEventListener('storage', () => {
                 let prize2 = localStorage.getItem('prize2')
 
                 if(darts === 1 && prize2 === null){
-                    localStorage.setItem('prize2', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize2.mp4'
+                    localStorage.setItem('prize2', '1')
                 } else {
                     let outcome = pickArray(0,3,1)
 
@@ -328,8 +328,8 @@ window.addEventListener('storage', () => {
                         './assets/vid/miss/miss3.mp4'
                     ]
 
-                    if(videos[outcome[0]] === './assets/vid/prize2.mp4'){
-                        localStorage.setItem('prize2', '1')
+                    if(videos[outcome[0]].match(/prize2/g)){
+                        localStorage.setItem('prize4', '1')
                     }
 
                     bullsmouthVideo.src = videos[outcome[0]]
@@ -339,8 +339,8 @@ window.addEventListener('storage', () => {
                 let prize1 = localStorage.getItem('prize1')
 
                 if(darts === 1 && prize1 === null){
-                    localStorage.setItem('prize1', '1')
                     bullsmouthVideo.src = './assets/vid/prizes/prize1.mp4'
+                    localStorage.setItem('prize1', '1')
                 } else {
                     let outcome = pickArray(0,3,1)
 
@@ -355,11 +355,11 @@ window.addEventListener('storage', () => {
                         './assets/vid/miss/miss3.mp4'
                     ]
 
-                    bullsmouthVideo.src = videos[outcome[0]]
-
-                    if(videos[outcome[0]] === './assets/vid/prize1.mp4'){
-                        localStorage.setItem('prize1', '1')
+                    if(videos[outcome[0]].match(/prize1/g)){
+                        localStorage.setItem('prize4', '1')
                     }
+
+                    bullsmouthVideo.src = videos[outcome[0]]
                 }
             }
 
@@ -374,6 +374,7 @@ window.addEventListener('storage', () => {
                 setVisibility(interfaceOptions, 'hidden')
 
                 bullsmouthVideo.addEventListener('ended', () => {
+                    setVisibility(interfaceOptions, 'hidden')
                     bullsmouthVideo.src = './assets/vid/conclusion.mp4'
                     bullsmouthVideo.load()
                     bullsmouthVideo.play()
