@@ -8,11 +8,6 @@ function keyboardControls(e) {
             navConfirm()
             break;
 
-        //Backspace
-        case 8:
-            history.back()
-            break;
-
         //ESC
         case 27:
             history.back()

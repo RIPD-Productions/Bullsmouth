@@ -1,3 +1,18 @@
+if(bullsmouthVideo.length !== null){
+    let startPlayPromise = bullsmouthVideo.play()
+
+    if (startPlayPromise !== undefined) {
+        startPlayPromise.catch(error => {
+            console.log(error)
+            if (error.name === "NotAllowedError") {
+                bullsmouthVideo.setAttribute("controls","controls")
+            } else if(error.name === "AbortError"){
+                bullsmouthVideo.setAttribute("controls","controls")
+            }
+        })
+    }
+}
+
 const dartCounter = document.getElementById('dartCounter')
 
 let questionSelection = pickArray(0,9,5)
@@ -541,3 +556,6 @@ window.addEventListener('storage', () => {
         interfaceOptions.addEventListener('click', roundThree)
     }
 })
+
+
+
